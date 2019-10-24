@@ -384,6 +384,7 @@ vhost_scsi=""
 vhost_vsock=""
 vhost_user=""
 vhost_user_fs=""
+virtio_mini=""
 kvm="no"
 hax="no"
 hvf="no"
@@ -1534,6 +1535,10 @@ for opt do
   ;;
   --enable-vhost-kernel) vhost_kernel="yes"
   ;;
+  --enable-virtio-mini) virtio_mini=yes
+  ;;
+  --disable-virtio-mini) virtio_mini=no
+  ;;
   --disable-capstone) capstone="no"
   ;;
   --enable-capstone) capstone="yes"
@@ -1815,6 +1820,7 @@ disabled with --disable-FEATURE, default is enabled if available:
   vhost-crypto    vhost-user-crypto backend support
   vhost-kernel    vhost kernel backend support
   vhost-user      vhost-user backend support
+  virtio-mini     virtio based system (9p, blk, net, pci, rng, scsi, serial)
   spice           spice
   rbd             rados block device (rbd)
   libiscsi        iscsi support
@@ -6633,6 +6639,7 @@ echo "vhost-scsi support $vhost_scsi"
 echo "vhost-vsock support $vhost_vsock"
 echo "vhost-user support $vhost_user"
 echo "vhost-user-fs support $vhost_user_fs"
+echo "virtio-mini       $virtio_mini"
 echo "Trace backends    $trace_backends"
 if have_backend "simple"; then
 echo "Trace output file $trace_file-<pid>"
@@ -7138,6 +7145,16 @@ if test "$vhost_user" = "yes" ; then
 fi
 if test "$vhost_user_fs" = "yes" ; then
   echo "CONFIG_VHOST_USER_FS=y" >> $config_host_mak
+fi
+if test "$virtio_mini" = "yes" ; then
+  echo "CONFIG_VIRTIO=y" >> $config_host_mak
+  echo "CONFIG_VIRTIO_9P=y" >> $config_host_mak
+  echo "CONFIG_VIRTIO_BLK=y" >> $config_host_mak
+  echo "CONFIG_VIRTIO_NET=y" >> $config_host_mak
+  echo "CONFIG_VIRTIO_PCI=y" >> $config_host_mak
+  echo "CONFIG_VIRTIO_RNG=y" >> $config_host_mak
+  echo "CONFIG_VIRTIO_SCSI=y" >> $config_host_mak
+  echo "CONFIG_VIRTIO_SERIAL=y" >> $config_host_mak
 fi
 if test "$blobs" = "yes" ; then
   echo "INSTALL_BLOBS=yes" >> $config_host_mak
@@ -7938,6 +7955,17 @@ if test ! -z "$gdb_xml_files" ; then
     list="$list $source_path/gdb-xml/$x"
   done
   echo "TARGET_XML_FILES=$list" >> $config_target_mak
+fi
+
+if test "$virtio_mini" = "yes" ; then
+  echo "CONFIG_VIRTIO=y" >> $config_target_mak
+  echo "CONFIG_VIRTIO_9P=y" >> $config_target_mak
+  echo "CONFIG_VIRTIO_BLK=y" >> $config_target_mak
+  echo "CONFIG_VIRTIO_NET=y" >> $config_target_mak
+  echo "CONFIG_VIRTIO_PCI=y" >> $config_target_mak
+  echo "CONFIG_VIRTIO_RNG=y" >> $config_target_mak
+  echo "CONFIG_VIRTIO_SCSI=y" >> $config_target_mak
+  echo "CONFIG_VIRTIO_SERIAL=y" >> $config_target_mak
 fi
 
 if test "$target_user_only" = "yes" && test "$bflt" = "yes"; then
