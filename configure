@@ -7072,6 +7072,7 @@ fi
 if test "$virtio_mini" = "yes" ; then
   echo "CONFIG_VIRTIO=y" >> $config_host_mak
   echo "CONFIG_VIRTIO_9P=y" >> $config_host_mak
+  echo "CONFIG_VIRTIO_FS=y" >> $config_host_mak
   echo "CONFIG_VIRTIO_BLK=y" >> $config_host_mak
   echo "CONFIG_VIRTIO_NET=y" >> $config_host_mak
   echo "CONFIG_VIRTIO_PCI=y" >> $config_host_mak
@@ -7871,6 +7872,7 @@ fi
 if test "$virtio_mini" = "yes" ; then
   echo "CONFIG_VIRTIO=y" >> $config_target_mak
   echo "CONFIG_VIRTIO_9P=y" >> $config_target_mak
+  echo "CONFIG_VIRTIO_FS=y" >> $config_target_mak
   echo "CONFIG_VIRTIO_BLK=y" >> $config_target_mak
   echo "CONFIG_VIRTIO_NET=y" >> $config_target_mak
   echo "CONFIG_VIRTIO_PCI=y" >> $config_target_mak
