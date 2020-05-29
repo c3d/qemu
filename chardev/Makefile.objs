@@ -22,4 +22,5 @@ common-obj-$(CONFIG_BRLAPI) += baum.o
 baum.o-cflags := $(SDL_CFLAGS)
 baum.o-libs := $(BRLAPI_LIBS)
 
-common-obj-$(CONFIG_SPICE) += spice.o
+common-obj-$(CONFIG_SPICE) += spice.mo
+spice.mo-objs := spice.o
