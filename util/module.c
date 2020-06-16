@@ -22,10 +22,10 @@
 #ifdef CONFIG_MODULE_UPGRADES
 #include "qemu-version.h"
 #endif
-#ifdef CONFIG_TRACE_RECORDER
 #include "trace/recorder.h"
-#endif
 
+
+RECORDER(modules, 16, "QEMU load modules");
 
 typedef struct ModuleEntry
 {
@@ -85,6 +85,15 @@ void register_dso_module_init(void (*fn)(void), module_init_type type)
 {
     ModuleEntry *e;
 
+#ifdef CONFIG_TRACE_RECORDER
+    static const char *name[] = {
+        "MIGRATION", "BLOCK", "OPTS", "QOM",
+        "TRACE", "XEN_BACKEND", "LIBQOS", "FUZZ_TARGET",
+        "MAX"
+    };
+#endif
+    record(modules, "Register DSO module init %p type %u %+s",
+           fn, type, name[type]);
     init_lists();
 
     e = g_malloc0(sizeof(*e));
