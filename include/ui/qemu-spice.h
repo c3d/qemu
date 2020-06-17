@@ -25,21 +25,107 @@
 #include <spice.h>
 #include "qemu/config-file.h"
 
-extern int using_spice;
+#define using_spice     (qemu_is_using_spice())
 
+#if !defined(CONFIG_MODULES) || defined(BUILD_DSO)
+/* Use actual functions */
+bool qemu_is_using_spice(void);
+void qemu_start_using_spice(void);
 void qemu_spice_init(void);
-void qemu_spice_input_init(void);
-void qemu_spice_audio_init(void);
 void qemu_spice_display_init(void);
 int qemu_spice_display_add_client(int csock, int skipauth, int tls);
-int qemu_spice_add_interface(SpiceBaseInstance *sin);
-bool qemu_spice_have_display_interface(QemuConsole *con);
-int qemu_spice_add_display_interface(QXLInstance *qxlin, QemuConsole *con);
 int qemu_spice_set_passwd(const char *passwd,
                           bool fail_if_connected, bool disconnect_if_connected);
 int qemu_spice_set_pw_expire(time_t expires);
 int qemu_spice_migrate_info(const char *hostname, int port, int tls_port,
                             const char *subject);
+struct SpiceInfo *qemu_spice_query(Error **errp);
+#endif /* !CONFIG_MODULES || BUILD_DSO */
+
+#ifdef CONFIG_MODULES
+struct QemuSpiceOps
+{
+    bool (*qemu_is_using_spice)(void);
+    void (*qemu_start_using_spice)(void);
+    void (*qemu_spice_init)(void);
+    void (*qemu_spice_display_init)(void);
+    int (*qemu_spice_display_add_client)(int csock, int skipauth, int tls);
+
+    int (*qemu_spice_set_passwd)(const char *passwd,
+                                 bool fail_if_connected,
+                                 bool disconnect_if_connected);
+    int (*qemu_spice_set_pw_expire)(time_t expires);
+    int (*qemu_spice_migrate_info)(const char *hostname,
+                                   int port, int tls_port,
+                                   const char *subject);
+    struct SpiceInfo * (*qemu_spice_query)(Error **errp);
+};
+typedef struct QemuSpiceOps QemuSpiceOps;
+void qemu_spice_ops_register(QemuSpiceOps *ops);
+
+#ifndef BUILD_DSO
+/* Inline wrappers for functions implemented in the module */
+extern struct QemuSpiceOps qemu_spice;
+
+static inline bool qemu_is_using_spice(void)
+{
+    return qemu_spice.qemu_is_using_spice();
+}
+
+static inline void qemu_start_using_spice(void)
+{
+    qemu_spice.qemu_start_using_spice();
+}
+
+static inline void qemu_spice_init(void)
+{
+    qemu_spice.qemu_spice_init();
+}
+
+static inline void qemu_spice_display_init(void)
+{
+    qemu_spice.qemu_spice_display_init();
+}
+
+static inline int qemu_spice_display_add_client(int csock, int skipauth, int tls)
+{
+    return qemu_spice.qemu_spice_display_add_client(csock, skipauth, tls);
+}
+
+static inline int qemu_spice_set_passwd(const char *passwd,
+                                        bool fail_if_connected,
+                                        bool disconnect_if_connected)
+{
+    return qemu_spice.qemu_spice_set_passwd(passwd,
+                                            fail_if_connected,
+                                            disconnect_if_connected);
+}
+
+static inline int qemu_spice_set_pw_expire(time_t expires)
+{
+    return qemu_spice.qemu_spice_set_pw_expire(expires);
+}
+
+static inline int qemu_spice_migrate_info(const char *hostname,
+                                          int port, int tls_port,
+                                          const char *subject)
+{
+    return qemu_spice.qemu_spice_migrate_info(hostname, port, tls_port, subject);
+}
+
+static inline struct SpiceInfo *qemu_spice_query(Error **errp)
+{
+    return qemu_spice.qemu_spice_query(errp);
+}
+
+#endif /* BUILD_DSO */
+#endif /* CONFIG_MODULES */
+
+void qemu_spice_input_init(void);
+void qemu_spice_audio_init(void);
+int qemu_spice_add_interface(SpiceBaseInstance *sin);
+bool qemu_spice_have_display_interface(QemuConsole *con);
+int qemu_spice_add_display_interface(QXLInstance *qxlin, QemuConsole *con);
 
 #if !defined(SPICE_SERVER_VERSION) || (SPICE_SERVER_VERSION < 0xc06)
 #define SPICE_NEEDS_SET_MM_TIME 1
@@ -52,7 +138,11 @@ void qemu_spice_register_ports(void);
 
 #include "qemu/error-report.h"
 
-#define using_spice 0
+static inline bool qemu_is_using_spice(void)
+{
+    return 0;
+}
+
 #define spice_displays 0
 static inline int qemu_spice_set_passwd(const char *passwd,
                                         bool fail_if_connected,

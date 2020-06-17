@@ -57,6 +57,7 @@
 
 #ifdef CONFIG_SPICE
 #include <spice/enums.h>
+#include "ui/qemu-spice.h"
 #endif
 
 void hmp_handle_error(Monitor *mon, Error *err)
@@ -573,6 +574,11 @@ void hmp_info_vnc(Monitor *mon, const QDict *qdict)
 #endif
 
 #ifdef CONFIG_SPICE
+SpiceInfo *qmp_query_spice(Error **errp)
+{
+    return qemu_spice_query(errp);
+}
+
 void hmp_info_spice(Monitor *mon, const QDict *qdict)
 {
     SpiceChannelList *chan;

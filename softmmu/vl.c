@@ -173,6 +173,16 @@ int icount_align_option;
 QemuUUID qemu_uuid;
 bool qemu_uuid_set;
 
+#if defined(CONFIG_SPICE) && defined(CONFIG_MODULES)
+QemuSpiceOps qemu_spice;
+void qemu_spice_ops_register(QemuSpiceOps *ops)
+{
+    memcpy(&qemu_spice, ops, sizeof(qemu_spice));
+}
+#endif /* modular spice */
+
+
+
 static NotifierList exit_notifiers =
     NOTIFIER_LIST_INITIALIZER(exit_notifiers);
 
