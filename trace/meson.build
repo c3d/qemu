@@ -50,6 +50,11 @@ foreach dir : [ '.' ] + trace_events_subdirs
 
     genh += trace_dtrace_h
   endif
+  if 'CONFIG_TRACE_RECORDER' in config_host
+    recorder = dependency('recorder')
+    trace_ss.add(files('recorder.c'))
+    trace_ss.add(recorder)
+  endif
 endforeach
 
 trace_events_all = custom_target('trace-events-all',

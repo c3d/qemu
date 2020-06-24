@@ -23,6 +23,8 @@
 #ifdef CONFIG_MODULE_UPGRADES
 #include "qemu-version.h"
 #endif
+#include "trace/recorder.h"
+
 
 typedef struct ModuleEntry
 {
@@ -157,6 +159,10 @@ static int module_load_file(const char *fname, bool mayfail, bool export_symbols
         g_module_close(g_module);
         ret = -EINVAL;
     } else {
+#ifdef CONFIG_TRACE_RECORDER
+        /* New recorders may have been pulled in, activate them if necessary */
+        recorder_trace_init();
+#endif
         QTAILQ_FOREACH(e, &dso_init_list, node) {
             e->init();
             register_module_init(e->init, e->type);
