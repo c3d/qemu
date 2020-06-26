@@ -39,6 +39,30 @@ static void __attribute__((constructor)) do_qemu_init_ ## function(void)    \
 }
 #endif
 
+#ifdef CONFIG_MODULES
+/* Identify which functions are replaced by a callback stub */
+#ifdef MODULE_STUBS
+#define MODIFACE(Ret,Name,Args)                                         \
+    Ret (*Name)Args;                                                    \
+    extern Ret Name##_implementation Args
+#else /* !MODULE_STUBS */
+#define MODIFACE(Ret,Name,Args)                                         \
+    extern Ret (*Name)Args;                                             \
+    extern Ret Name##_implementation Args
+#endif /* MODULE_STUBS */
+
+#define MODIMPL(Ret,Name,Args)                                          \
+    static void __attribute__((constructor)) Name##_register(void)      \
+    {                                                                   \
+        Name = Name##_implementation;                                   \
+    }                                                                   \
+    Ret Name##_implementation Args
+#else /* !CONFIG_MODULES */
+/* When not using a module, such functions are called directly */
+#define MODIFACE(Ret,Name,Args)         Ret Name Args
+#define MODIMPL(Ret,Name,Args)          Ret Name Args
+#endif /* CONFIG_MODULES */
+
 typedef enum {
     MODULE_INIT_MIGRATION,
     MODULE_INIT_BLOCK,
