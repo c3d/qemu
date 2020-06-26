@@ -24,22 +24,28 @@
 
 #include <spice.h>
 #include "qemu/config-file.h"
+#include "qemu/module.h"
 
-extern int using_spice;
+#define using_spice     (qemu_is_using_spice())
 
-void qemu_spice_init(void);
+MODIFACE(bool, qemu_is_using_spice,(void));
+MODIFACE(void, qemu_start_using_spice, (void));
+MODIFACE(void, qemu_spice_init, (void));
 void qemu_spice_input_init(void);
 void qemu_spice_audio_init(void);
-void qemu_spice_display_init(void);
-int qemu_spice_display_add_client(int csock, int skipauth, int tls);
+MODIFACE(void, qemu_spice_display_init, (void));
+MODIFACE(int, qemu_spice_display_add_client, (int csock, int skipauth, int tls));
 int qemu_spice_add_interface(SpiceBaseInstance *sin);
 bool qemu_spice_have_display_interface(QemuConsole *con);
 int qemu_spice_add_display_interface(QXLInstance *qxlin, QemuConsole *con);
-int qemu_spice_set_passwd(const char *passwd,
-                          bool fail_if_connected, bool disconnect_if_connected);
-int qemu_spice_set_pw_expire(time_t expires);
-int qemu_spice_migrate_info(const char *hostname, int port, int tls_port,
-                            const char *subject);
+MODIFACE(int, qemu_spice_set_passwd, (const char *passwd,
+                                      bool fail_if_connected,
+                                      bool disconnect_if_connected));
+MODIFACE(int, qemu_spice_set_pw_expire,(time_t expires));
+MODIFACE(int, qemu_spice_migrate_info,(const char *hostname,
+                                       int port, int tls_port,
+                                       const char *subject));
+MODIFACE(struct SpiceInfo *,qemu_spice_query, (Error **errp));
 
 #if !defined(SPICE_SERVER_VERSION) || (SPICE_SERVER_VERSION < 0xc06)
 #define SPICE_NEEDS_SET_MM_TIME 1

@@ -48,7 +48,7 @@ static time_t auth_expires = TIME_MAX;
 static int spice_migration_completed;
 static int spice_display_is_running;
 static int spice_have_target_host;
-int using_spice = 0;
+static int is_using_spice = 0;
 
 static QemuThread me;
 
@@ -503,7 +503,7 @@ static QemuOptsList qemu_spice_opts = {
     },
 };
 
-SpiceInfo *qmp_query_spice(Error **errp)
+MODIMPL(SpiceInfo *,qemu_spice_query,(Error **errp))
 {
     QemuOpts *opts = QTAILQ_FIRST(&qemu_spice_opts.head);
     int port, tls_port;
@@ -579,8 +579,9 @@ static void migration_state_notifier(Notifier *notifier, void *data)
     }
 }
 
-int qemu_spice_migrate_info(const char *hostname, int port, int tls_port,
-                            const char *subject)
+MODIMPL(int, qemu_spice_migrate_info, (const char *hostname,
+                                       int port, int tls_port,
+                                       const char *subject))
 {
     int ret;
 
@@ -634,7 +635,17 @@ static void vm_change_state_handler(void *opaque, int running,
     }
 }
 
-void qemu_spice_init(void)
+MODIMPL(bool, qemu_is_using_spice, (void))
+{
+    return is_using_spice;
+}
+
+MODIMPL(void, qemu_start_using_spice, (void))
+{
+    is_using_spice = 1;
+}
+
+MODIMPL(void, qemu_spice_init, (void))
 {
     QemuOpts *opts = QTAILQ_FIRST(&qemu_spice_opts.head);
     const char *password, *str, *x509_dir, *addr,
@@ -796,7 +807,7 @@ void qemu_spice_init(void)
         error_report("failed to initialize spice server");
         exit(1);
     };
-    using_spice = 1;
+    qemu_start_using_spice();
 
     migration_state.notify = migration_state_notifier;
     add_migration_state_change_notifier(&migration_state);
@@ -945,8 +956,8 @@ static int qemu_spice_set_ticket(bool fail_if_conn, bool disconnect_if_conn)
                                    fail_if_conn, disconnect_if_conn);
 }
 
-int qemu_spice_set_passwd(const char *passwd,
-                          bool fail_if_conn, bool disconnect_if_conn)
+MODIMPL(int, qemu_spice_set_passwd,(const char *passwd,
+                                    bool fail_if_conn, bool disconnect_if_conn))
 {
     if (strcmp(auth, "spice") != 0) {
         return -1;
@@ -957,13 +968,13 @@ int qemu_spice_set_passwd(const char *passwd,
     return qemu_spice_set_ticket(fail_if_conn, disconnect_if_conn);
 }
 
-int qemu_spice_set_pw_expire(time_t expires)
+MODIMPL(int, qemu_spice_set_pw_expire, (time_t expires))
 {
     auth_expires = expires;
     return qemu_spice_set_ticket(false, false);
 }
 
-int qemu_spice_display_add_client(int csock, int skipauth, int tls)
+MODIMPL(int, qemu_spice_display_add_client, (int csock, int skipauth, int tls))
 {
     if (tls) {
         return spice_server_add_ssl_client(spice_server, csock, skipauth);

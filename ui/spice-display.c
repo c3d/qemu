@@ -1164,7 +1164,7 @@ static void qemu_spice_display_init_one(QemuConsole *con)
     register_displaychangelistener(&ssd->dcl);
 }
 
-void qemu_spice_display_init(void)
+MODIMPL(void, qemu_spice_display_init,(void))
 {
     QemuOptsList *olist = qemu_find_opts("spice");
     QemuOpts *opts = QTAILQ_FIRST(&olist->head);
