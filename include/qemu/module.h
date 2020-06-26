@@ -14,9 +14,12 @@
 #ifndef QEMU_MODULE_H
 #define QEMU_MODULE_H
 
+#include "trace/recorder.h"
 
 #define DSO_STAMP_FUN         glue(qemu_stamp, CONFIG_STAMP)
 #define DSO_STAMP_FUN_STR     stringify(DSO_STAMP_FUN)
+
+RECORDER_DECLARE(modules);
 
 #ifdef BUILD_DSO
 void DSO_STAMP_FUN(void);
@@ -55,6 +58,7 @@ static void __attribute__((constructor)) do_qemu_init_ ## function(void)    \
     static void __attribute__((constructor)) Name##_register(void)      \
     {                                                                   \
         Name = Name##_implementation;                                   \
+        record(modules, "Setting " #Name " to %p", Name);               \
     }                                                                   \
     Ret Name##_implementation Args
 #else /* !CONFIG_MODULES */
