@@ -685,7 +685,7 @@ static void sun4uv_init(MemoryRegion *address_space_mem,
     memory_region_add_subregion(pci_address_space_io(ebus), 0x2000,
                                 sysbus_mmio_get_region(s, 0));
     nvram = NVRAM(dev);
- 
+
     initrd_size = 0;
     initrd_addr = 0;
     kernel_size = sun4u_load_kernel(machine->kernel_filename,

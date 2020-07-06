@@ -670,7 +670,7 @@ static int ohci_service_iso_td(OHCIState *ohci, struct ohci_ed *ed,
 
     starting_frame = OHCI_BM(iso_td.flags, TD_SF);
     frame_count = OHCI_BM(iso_td.flags, TD_FC);
-    relative_frame_number = USUB(ohci->frame_number, starting_frame); 
+    relative_frame_number = USUB(ohci->frame_number, starting_frame);
 
     trace_usb_ohci_iso_td_head(
            ed->head & OHCI_DPTR_MASK, ed->tail & OHCI_DPTR_MASK,
@@ -741,8 +741,8 @@ static int ohci_service_iso_td(OHCIState *ohci, struct ohci_ed *ed,
         next_offset = iso_td.be;
     }
 
-    if (!(OHCI_BM(start_offset, TD_PSW_CC) & 0xe) || 
-        ((relative_frame_number < frame_count) && 
+    if (!(OHCI_BM(start_offset, TD_PSW_CC) & 0xe) ||
+        ((relative_frame_number < frame_count) &&
          !(OHCI_BM(next_offset, TD_PSW_CC) & 0xe))) {
         trace_usb_ohci_iso_td_bad_cc_not_accessed(start_offset, next_offset);
         return 1;
