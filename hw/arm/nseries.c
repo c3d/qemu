@@ -737,7 +737,7 @@ static void n800_dss_init(struct rfbi_chip_s *chip)
     chip->write(chip->opaque, 0, 0x68);		/* Display Mode register */
     chip->write(chip->opaque, 1, 1);		/* Enable bit */
 
-    chip->write(chip->opaque, 0, 0x6c);	
+    chip->write(chip->opaque, 0, 0x6c);
     chip->write(chip->opaque, 1, 0x00);		/* Input X Start Position */
     chip->write(chip->opaque, 1, 0x00);		/* Input X Start Position */
     chip->write(chip->opaque, 1, 0x00);		/* Input Y Start Position */

@@ -505,7 +505,7 @@ static int channel_in_process(struct fs_dma_ctrl *ctrl, int c,
 	saved_data_buf = channel_reg(ctrl, c, RW_SAVED_DATA_BUF);
 	len = (uint32_t)(unsigned long)ctrl->channels[c].current_d.after;
 	len -= saved_data_buf;
-	
+
 	if (len > buflen)
 		len = buflen;
 

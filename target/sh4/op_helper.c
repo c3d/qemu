@@ -146,7 +146,7 @@ void helper_ocbi(CPUSH4State *env, uint32_t address)
 	{
 	    memory_content *next = (*current)->next;
             cpu_stl_data(env, a, (*current)->value);
-	
+
 	    if (next == NULL)
 	    {
 		env->movcal_backup_tail = current;

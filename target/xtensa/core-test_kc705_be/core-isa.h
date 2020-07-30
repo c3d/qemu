@@ -111,7 +111,7 @@
 #define XCHAL_HAVE_HIFI2		1	/* HiFi2 Audio Engine pkg */
 #define XCHAL_HAVE_HIFI2_MUL32X24	1	/* HiFi2 and 32x24 MACs */
 #define XCHAL_HAVE_HIFI2EP		1	/* HiFi2EP */
-#define XCHAL_HAVE_HIFI_MINI		0	
+#define XCHAL_HAVE_HIFI_MINI		0
 
 
 #define XCHAL_HAVE_VECTORFPU2005	0	/* vector or user floating-point pkg */

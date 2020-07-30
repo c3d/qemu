@@ -41,7 +41,7 @@
 #define DEBUG_HERE \
 	jmp		1f;				\
 	1:
-	
+
 /*
  * Read a variable from the fw_cfg device.
  * Clobbers:	%edx

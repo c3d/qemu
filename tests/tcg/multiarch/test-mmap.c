@@ -126,7 +126,7 @@ void check_large_anonymous_unfixed_mmap(void)
 	fail_unless (p1 != MAP_FAILED);
 	p = (uintptr_t) p1;
 	fail_unless ((p & pagemask) == 0);
-	
+
 	/* Make sure we can read from the entire area.  */
 	memcpy (dummybuf, p1, pagesize);
 	munmap (p1, len);
@@ -207,7 +207,7 @@ void check_aligned_anonymous_fixed_mmaps(void)
 		   The target expects this.  */
 		p = (uintptr_t) p1;
 		fail_unless (p1 == addr);
-		fail_unless ((p & pagemask) == 0);		
+		fail_unless ((p & pagemask) == 0);
 		memcpy (dummybuf, p1, pagesize);
 		munmap (p1, pagesize);
 		addr += pagesize;
@@ -238,7 +238,7 @@ void check_aligned_anonymous_fixed_mmaps_collide_with_host(void)
 		   The target expects this.  */
 		p = (uintptr_t) p1;
 		fail_unless (p1 == addr);
-		fail_unless ((p & pagemask) == 0);		
+		fail_unless ((p & pagemask) == 0);
 		memcpy (p1, dummybuf, pagesize);
 		munmap (p1, pagesize);
 		addr += pagesize;
