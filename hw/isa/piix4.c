@@ -60,17 +60,17 @@ static void piix4_isa_reset(DeviceState *dev)
     PIIX4State *d = PIIX4_PCI_DEVICE(dev);
     uint8_t *pci_conf = d->dev.config;
 
-    pci_conf[0x04] = 0x07; // master, memory and I/O
+    pci_conf[0x04] = 0x07; /*  master, memory and I/O */
     pci_conf[0x05] = 0x00;
     pci_conf[0x06] = 0x00;
-    pci_conf[0x07] = 0x02; // PCI_status_devsel_medium
+    pci_conf[0x07] = 0x02; /*  PCI_status_devsel_medium */
     pci_conf[0x4c] = 0x4d;
     pci_conf[0x4e] = 0x03;
     pci_conf[0x4f] = 0x00;
-    pci_conf[0x60] = 0x0a; // PCI A -> IRQ 10
-    pci_conf[0x61] = 0x0a; // PCI B -> IRQ 10
-    pci_conf[0x62] = 0x0b; // PCI C -> IRQ 11
-    pci_conf[0x63] = 0x0b; // PCI D -> IRQ 11
+    pci_conf[0x60] = 0x0a; /*  PCI A -> IRQ 10 */
+    pci_conf[0x61] = 0x0a; /*  PCI B -> IRQ 10 */
+    pci_conf[0x62] = 0x0b; /*  PCI C -> IRQ 11 */
+    pci_conf[0x63] = 0x0b; /*  PCI D -> IRQ 11 */
     pci_conf[0x69] = 0x02;
     pci_conf[0x70] = 0x80;
     pci_conf[0x76] = 0x0c;

@@ -467,7 +467,7 @@ static void piix4_pm_realize(PCIDevice *dev, Error **errp)
     pci_conf[0x06] = 0x80;
     pci_conf[0x07] = 0x02;
     pci_conf[0x09] = 0x00;
-    pci_conf[0x3d] = 0x01; // interrupt pin 1
+    pci_conf[0x3d] = 0x01; /*  interrupt pin 1 */
 
     /* APM */
     apm_init(dev, &s->apm, apm_ctrl_changed, s);

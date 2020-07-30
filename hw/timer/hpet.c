@@ -38,7 +38,7 @@
 #include "hw/timer/i8254.h"
 #include "exec/address-spaces.h"
 
-//#define HPET_DEBUG
+/*#define HPET_DEBUG */
 #ifdef HPET_DEBUG
 #define DPRINTF printf
 #else
@@ -451,9 +451,9 @@ static uint64_t hpet_ram_read(void *opaque, hwaddr addr,
         switch ((addr - 0x100) % 0x20) {
         case HPET_TN_CFG:
             return timer->config;
-        case HPET_TN_CFG + 4: // Interrupt capabilities
+        case HPET_TN_CFG + 4: /*  Interrupt capabilities */
             return timer->config >> 32;
-        case HPET_TN_CMP: // comparator register
+        case HPET_TN_CMP: /*  comparator register */
             return timer->cmp;
         case HPET_TN_CMP + 4:
             return timer->cmp >> 32;
@@ -543,10 +543,10 @@ static void hpet_ram_write(void *opaque, hwaddr addr,
                 hpet_del_timer(timer);
             }
             break;
-        case HPET_TN_CFG + 4: // Interrupt capabilities
+        case HPET_TN_CFG + 4: /*  Interrupt capabilities */
             DPRINTF("qemu: invalid HPET_TN_CFG+4 write\n");
             break;
-        case HPET_TN_CMP: // comparator register
+        case HPET_TN_CMP: /*  comparator register */
             DPRINTF("qemu: hpet_ram_writel HPET_TN_CMP\n");
             if (timer->config & HPET_TN_32BIT) {
                 new_val = (uint32_t)new_val;
@@ -569,7 +569,7 @@ static void hpet_ram_write(void *opaque, hwaddr addr,
                 hpet_set_timer(timer);
             }
             break;
-        case HPET_TN_CMP + 4: // comparator register high order
+        case HPET_TN_CMP + 4: /*  comparator register high order */
             DPRINTF("qemu: hpet_ram_writel HPET_TN_CMP + 4\n");
             if (!timer_is_periodic(timer)
                 || (timer->config & HPET_TN_SETVAL)) {

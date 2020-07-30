@@ -26,7 +26,7 @@
 #include "exec/exec-all.h"
 #include "exec/cpu_ldst.h"
 
-//#define CRIS_OP_HELPER_DEBUG
+/*#define CRIS_OP_HELPER_DEBUG */
 
 
 #ifdef CRIS_OP_HELPER_DEBUG

@@ -26,7 +26,7 @@
 #include "hw/qdev-properties.h"
 #include "qapi/visitor.h"
 
-//#define DEBUG_FEATURES
+/*#define DEBUG_FEATURES */
 
 static void sparc_cpu_reset(DeviceState *dev)
 {

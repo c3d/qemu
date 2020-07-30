@@ -193,14 +193,14 @@ enum microblaze_instr_type {
 #define RB_MASK 0x0000F800
 #define IMM_MASK 0x0000FFFF
 
-// imm mask for barrel shifts
+/* imm mask for barrel shifts */
 #define IMM5_MASK 0x0000001F
 
 
-// FSL imm mask for get, put instructions
+/* FSL imm mask for get, put instructions */
 #define  RFSL_MASK 0x000000F
 
-// imm mask for msrset, msrclr instructions
+/* imm mask for msrset, msrclr instructions */
 #define  IMM15_MASK 0x00007FFF
 
 #endif /* MICROBLAZE-OPCM */
@@ -218,21 +218,21 @@ enum microblaze_instr_type {
 #define INST_TYPE_SPECIAL_R1 10
 #define INST_TYPE_RD_SPECIAL 11
 #define INST_TYPE_R1 12
-  // new instn type for barrel shift imms
+  /* new instn type for barrel shift imms */
 #define INST_TYPE_RD_R1_IMM5  13
 #define INST_TYPE_RD_RFSL    14
 #define INST_TYPE_R1_RFSL    15
 
-  // new insn type for insn cache
+  /* new insn type for insn cache */
 #define INST_TYPE_RD_R1_SPECIAL 16
 
-// new insn type for msrclr, msrset insns.
+/* new insn type for msrclr, msrset insns. */
 #define INST_TYPE_RD_IMM15    17
 
-// new insn type for tuqula rd - addik rd, r0, 42
+/* new insn type for tuqula rd - addik rd, r0, 42 */
 #define INST_TYPE_RD    18
 
-// new insn type for t*put
+/* new insn type for t*put */
 #define INST_TYPE_RFSL  19
 
 #define INST_TYPE_NONE 25
@@ -263,7 +263,7 @@ enum microblaze_instr_type {
 #define OPCODE_MASK_H34B   0xFC0000FF /* High 6 bits and low 8 bits */
 #define OPCODE_MASK_H34C   0xFC0007E0 /* High 6 bits and bits 21-26 */
 
-// New Mask for msrset, msrclr insns.
+/* New Mask for msrset, msrclr insns. */
 #define OPCODE_MASK_H23N  0xFC1F8000 /* High 6 and bits 11 - 16 */
 
 #define DELAY_SLOT 1

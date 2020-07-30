@@ -23,8 +23,8 @@
 #include "fpu/softfloat.h"
 #include "fpopcode.h"
 #include "fpsr.h"
-//#include "fpmodule.h"
-//#include "fpmodule.inl"
+/*#include "fpmodule.h" */
+/*#include "fpmodule.inl" */
 
 const floatx80 floatx80Constant[] = {
   { 0x0000000000000000ULL, 0x0000},	/* extended 0.0 */

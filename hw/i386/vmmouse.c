@@ -32,7 +32,7 @@
 #include "cpu.h"
 
 /* debug only vmmouse */
-//#define DEBUG_VMMOUSE
+/*#define DEBUG_VMMOUSE */
 
 #define VMMOUSE_READ_ID			0x45414552
 #define VMMOUSE_DISABLE			0x000000f5

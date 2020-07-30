@@ -16,7 +16,7 @@
 #include "hw/sysbus.h"
 #include "qemu/module.h"
 
-//#define DEBUG_BITBANG_I2C
+/*#define DEBUG_BITBANG_I2C */
 
 #ifdef DEBUG_BITBANG_I2C
 #define DPRINTF(fmt, ...) \
@@ -38,7 +38,7 @@ static void bitbang_i2c_enter_stop(bitbang_i2c_interface *i2c)
 static int bitbang_i2c_ret(bitbang_i2c_interface *i2c, int level)
 {
     i2c->device_out = level;
-    //DPRINTF("%d %d %d\n", i2c->last_clock, i2c->last_data, i2c->device_out);
+    /*DPRINTF("%d %d %d\n", i2c->last_clock, i2c->last_data, i2c->device_out); */
     return level & i2c->last_data;
 }
 

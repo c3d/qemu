@@ -19,7 +19,7 @@
 /* For crc32 */
 #include <zlib.h>
 
-//#define DEBUG_FEC 1
+/*#define DEBUG_FEC 1 */
 
 #ifdef DEBUG_FEC
 #define DPRINTF(fmt, ...) \

@@ -255,7 +255,7 @@ static void pci_cmd646_ide_realize(PCIDevice *dev, Error **errp)
 
     pci_conf[PCI_CLASS_PROG] = 0x8f;
 
-    pci_conf[CNTRL] = CNTRL_EN_CH0; // enable IDE0
+    pci_conf[CNTRL] = CNTRL_EN_CH0; /*  enable IDE0 */
     if (d->secondary) {
         /* XXX: if not enabled, really disable the seconday IDE controller */
         pci_conf[CNTRL] |= CNTRL_EN_CH1; /* enable IDE1 */
@@ -289,7 +289,7 @@ static void pci_cmd646_ide_realize(PCIDevice *dev, Error **errp)
     pci_register_bar(dev, 4, PCI_BASE_ADDRESS_SPACE_IO, &d->bmdma_bar);
 
     /* TODO: RST# value should be 0 */
-    pci_conf[PCI_INTERRUPT_PIN] = 0x01; // interrupt on pin 1
+    pci_conf[PCI_INTERRUPT_PIN] = 0x01; /*  interrupt on pin 1 */
 
     qdev_init_gpio_in(ds, cmd646_set_irq, 2);
     for (i = 0; i < 2; i++) {

@@ -38,7 +38,7 @@
 #include "sysemu/sysemu.h"
 #include "trace.h"
 
-//#define DEBUG_PARALLEL
+/*#define DEBUG_PARALLEL */
 
 #ifdef DEBUG_PARALLEL
 #define pdebug(fmt, ...) printf("pp: " fmt, ## __VA_ARGS__)

@@ -26,7 +26,7 @@
 /* For crc32 */
 #include <zlib.h>
 
-//#define DEBUG_LAN9118
+/*#define DEBUG_LAN9118 */
 
 #ifdef DEBUG_LAN9118
 #define DPRINTF(fmt, ...) \
@@ -1020,7 +1020,7 @@ static void lan9118_writel(void *opaque, hwaddr offset,
     lan9118_state *s = (lan9118_state *)opaque;
     offset &= 0xff;
 
-    //DPRINTF("Write reg 0x%02x = 0x%08x\n", (int)offset, val);
+    /*DPRINTF("Write reg 0x%02x = 0x%08x\n", (int)offset, val); */
     if (offset >= 0x20 && offset < 0x40) {
         /* TX FIFO */
         tx_fifo_push(s, val);
@@ -1169,7 +1169,7 @@ static void lan9118_writew(void *opaque, hwaddr offset,
         s->write_word_l = val;
     }
 
-    //DPRINTF("Writew reg 0x%02x = 0x%08x\n", (int)offset, val);
+    /*DPRINTF("Writew reg 0x%02x = 0x%08x\n", (int)offset, val); */
     s->write_word_n++;
     if (s->write_word_n == 2) {
         s->write_word_n = 0;
@@ -1198,7 +1198,7 @@ static uint64_t lan9118_readl(void *opaque, hwaddr offset,
 {
     lan9118_state *s = (lan9118_state *)opaque;
 
-    //DPRINTF("Read reg 0x%02x\n", (int)offset);
+    /*DPRINTF("Read reg 0x%02x\n", (int)offset); */
     if (offset < 0x20) {
         /* RX FIFO */
         return rx_fifo_pop(s);
@@ -1291,7 +1291,7 @@ static uint32_t lan9118_readw(void *opaque, hwaddr offset)
         val = s->read_long & 0xFFFF;
     }
 
-    //DPRINTF("Readw reg 0x%02x, val 0x%x\n", (int)offset, val);
+    /*DPRINTF("Readw reg 0x%02x, val 0x%x\n", (int)offset, val); */
     return val;
 }
 

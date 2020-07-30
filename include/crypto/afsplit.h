@@ -40,7 +40,7 @@
  *    <title>Creating a large split key for storage</title>
  *    <programlisting>
  * size_t nkey = 32;
- * uint32_t stripes = 32768; // To produce a 1 MB split key
+ *  uint32_t stripes = 32768;  //  To produce a 1 MB split key
  * uint8_t *masterkey = ....a 32-byte AES key...
  * uint8_t *splitkey;
  *
@@ -65,7 +65,7 @@
  *    <title>Retrieving a master key from storage</title>
  *    <programlisting>
  * size_t nkey = 32;
- * uint32_t stripes = 32768; // To produce a 1 MB split key
+ *  uint32_t stripes = 32768; //  To produce a 1 MB split key
  * uint8_t *masterkey;
  * uint8_t *splitkey = .... read in 1 MB of data...
  *

@@ -31,7 +31,7 @@
 #include "hw/pci/pcie_regs.h"
 #include "qapi/error.h"
 
-//#define DEBUG_PCIE
+/*#define DEBUG_PCIE */
 #ifdef DEBUG_PCIE
 # define PCIE_DPRINTF(fmt, ...)                                         \
     fprintf(stderr, "%s:%d " fmt, __func__, __LINE__, ## __VA_ARGS__)

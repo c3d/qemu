@@ -671,7 +671,7 @@ void esp_reg_write(ESPState *s, uint32_t saddr, uint64_t val)
             break;
         case CMD_FLUSH:
             trace_esp_mem_writeb_cmd_flush(val);
-            //s->ti_size = 0;
+            /*s->ti_size = 0; */
             s->rregs[ESP_RINTR] = INTR_FC;
             s->rregs[ESP_RSEQ] = 0;
             s->rregs[ESP_RFLAGS] = 0;

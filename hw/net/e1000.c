@@ -422,7 +422,7 @@ set_mdic(E1000State *s, int index, uint32_t val)
     uint32_t data = val & E1000_MDIC_DATA_MASK;
     uint32_t addr = ((val & E1000_MDIC_REG_MASK) >> E1000_MDIC_REG_SHIFT);
 
-    if ((val & E1000_MDIC_PHY_MASK) >> E1000_MDIC_PHY_SHIFT != 1) // phy #
+    if ((val & E1000_MDIC_PHY_MASK) >> E1000_MDIC_PHY_SHIFT != 1) /*  phy # */
         val = s->mac_reg[MDIC] | E1000_MDIC_ERROR;
     else if (val & E1000_MDIC_OP_READ) {
         DBGOUT(MDIC, "MDIC read reg 0x%x\n", addr);
@@ -590,7 +590,7 @@ xmit_seg(E1000State *s)
         }
         if (tp->sum_needed & E1000_TXD_POPTS_TXSM) {
             unsigned int phsum;
-            // add pseudo-header length before checksum calculation
+            /* add pseudo-header length before checksum calculation */
             void *sp = tp->data + props->tucso;
 
             phsum = lduw_be_p(sp) + len;
@@ -646,13 +646,13 @@ process_tx_desc(E1000State *s, struct e1000_tx_desc *dp)
         }
         return;
     } else if (dtype == (E1000_TXD_CMD_DEXT | E1000_TXD_DTYP_D)) {
-        // data descriptor
+        /* data descriptor */
         if (tp->size == 0) {
             tp->sum_needed = le32_to_cpu(dp->upper.data) >> 8;
         }
         tp->cptse = (txd_lower & E1000_TXD_CMD_TSE) ? 1 : 0;
     } else {
-        // legacy descriptor
+        /* legacy descriptor */
         tp->cptse = 0;
     }
 
@@ -984,7 +984,7 @@ e1000_receive_iov(NetClientState *nc, const struct iovec *iov, int iovcnt)
                    Clear EOP in case guest didn't do it. */
                 desc.status &= ~E1000_RXD_STAT_EOP;
             }
-        } else { // as per intel docs; skip descriptors with null buf addr
+        } else { /*  as per intel docs; skip descriptors with null buf addr */
             DBGOUT(RX, "Null RX descriptor!!\n");
         }
         pci_dma_write(d, base, &desc, sizeof(desc));

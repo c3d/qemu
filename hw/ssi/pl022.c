@@ -16,7 +16,7 @@
 #include "qemu/log.h"
 #include "qemu/module.h"
 
-//#define DEBUG_PL022 1
+/*#define DEBUG_PL022 1 */
 
 #ifdef DEBUG_PL022
 #define DPRINTF(fmt, ...) \

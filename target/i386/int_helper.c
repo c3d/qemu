@@ -25,7 +25,7 @@
 #include "qapi/error.h"
 #include "qemu/guest-random.h"
 
-//#define DEBUG_MULDIV
+/*#define DEBUG_MULDIV */
 
 /* modulo 9 table */
 static const uint8_t rclb_table[32] = {

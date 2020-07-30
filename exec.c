@@ -81,7 +81,7 @@
 #include <daxctl/libdaxctl.h>
 #endif
 
-//#define DEBUG_SUBPAGE
+/*#define DEBUG_SUBPAGE */
 
 #if !defined(CONFIG_USER_ONLY)
 /* ram_list is read under rcu_read_lock()/rcu_read_unlock().  Writes

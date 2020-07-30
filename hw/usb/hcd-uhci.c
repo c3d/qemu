@@ -1222,7 +1222,7 @@ static void usb_uhci_common_realize(PCIDevice *dev, Error **errp)
 
     pci_conf[PCI_CLASS_PROG] = 0x00;
     /* TODO: reset value should be 0. */
-    pci_conf[USB_SBRN] = USB_RELEASE_1; // release number
+    pci_conf[USB_SBRN] = USB_RELEASE_1; /*  release number */
 
     pci_config_set_interrupt_pin(pci_conf, u->info.irq_pin + 1);
 

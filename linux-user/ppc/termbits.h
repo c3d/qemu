@@ -167,7 +167,7 @@ struct target_termios {
 #define TARGET_FIONBIO		TARGET_IOW('f', 126, int)
 #define TARGET_FIONREAD	        TARGET_IOR('f', 127, int)
 #define TARGET_TIOCINQ		TARGET_FIONREAD
-//#define TARGET_FIOQSIZE	        TARGET_IOR('f', 128, loff_t)
+/*#define TARGET_FIOQSIZE	        TARGET_IOR('f', 128, loff_t) */
 
 #define TARGET_TCGETS		TARGET_IOR('t', 19, struct target_termios)
 #define TARGET_TCSETS		TARGET_IOW('t', 20, struct target_termios)

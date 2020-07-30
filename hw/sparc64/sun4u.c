@@ -353,12 +353,12 @@ static void ebus_realize(PCIDevice *pci_dev, Error **errp)
                                 sysbus_mmio_get_region(sbd, 0));
 
     /* PCI */
-    pci_dev->config[0x04] = 0x06; // command = bus master, pci mem
+    pci_dev->config[0x04] = 0x06; /*  command = bus master, pci mem */
     pci_dev->config[0x05] = 0x00;
-    pci_dev->config[0x06] = 0xa0; // status = fast back-to-back, 66MHz, no error
-    pci_dev->config[0x07] = 0x03; // status = medium devsel
-    pci_dev->config[0x09] = 0x00; // programming i/f
-    pci_dev->config[0x0D] = 0x0a; // latency_timer
+    pci_dev->config[0x06] = 0xa0; /*  status = fast back-to-back, 66MHz, no error */
+    pci_dev->config[0x07] = 0x03; /*  status = medium devsel */
+    pci_dev->config[0x09] = 0x00; /*  programming i/f */
+    pci_dev->config[0x0D] = 0x0a; /*  latency_timer */
 
     memory_region_init_alias(&s->bar0, OBJECT(s), "bar0", get_system_io(),
                              0, 0x1000000);

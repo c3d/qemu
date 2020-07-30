@@ -23,10 +23,10 @@
 #include "fpa11.h"
 #include "fpu/softfloat.h"
 #include "fpopcode.h"
-//#include "fpmodule.h"
-//#include "fpmodule.inl"
+/*#include "fpmodule.h" */
+/*#include "fpmodule.inl" */
 
-//#include <asm/uaccess.h>
+/*#include <asm/uaccess.h> */
 
 static inline
 void loadSingle(const unsigned int Fn, target_ulong addr)
@@ -218,7 +218,7 @@ static unsigned int PerformLDF(const unsigned int opcode)
     unsigned int nRc = 1,
      write_back = WRITE_BACK(opcode);
 
-   //printk("PerformLDF(0x%08x), Fd = 0x%08x\n",opcode,getFd(opcode));
+   /*printk("PerformLDF(0x%08x), Fd = 0x%08x\n",opcode,getFd(opcode)); */
 
    pBase = readRegister(getRn(opcode));
    if (ARM_REG_PC == getRn(opcode))
@@ -253,7 +253,7 @@ static unsigned int PerformSTF(const unsigned int opcode)
    unsigned int nRc = 1,
      write_back = WRITE_BACK(opcode);
 
-   //printk("PerformSTF(0x%08x), Fd = 0x%08x\n",opcode,getFd(opcode));
+   /*printk("PerformSTF(0x%08x), Fd = 0x%08x\n",opcode,getFd(opcode)); */
    SetRoundingMode(ROUND_TO_NEAREST);
 
    pBase = readRegister(getRn(opcode));
@@ -354,7 +354,7 @@ unsigned int EmulateCPDT(const unsigned int opcode)
 {
   unsigned int nRc = 0;
 
-  //printk("EmulateCPDT(0x%08x)\n",opcode);
+  /*printk("EmulateCPDT(0x%08x)\n",opcode); */
 
   if (LDF_OP(opcode))
   {

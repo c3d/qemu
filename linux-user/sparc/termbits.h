@@ -193,30 +193,30 @@ struct target_termios {
 /* Little t */
 #define TARGET_TIOCGETD	TARGET_IOR('t', 0, int)
 #define TARGET_TIOCSETD	TARGET_IOW('t', 1, int)
-//#define __TIOCHPCL        _IO('t', 2) /* SunOS Specific */
-//#define __TIOCMODG        _IOR('t', 3, int) /* SunOS Specific */
-//#define __TIOCMODS        _IOW('t', 4, int) /* SunOS Specific */
-//#define __TIOCGETP        _IOR('t', 8, struct sgttyb) /* SunOS Specific */
-//#define __TIOCSETP        _IOW('t', 9, struct sgttyb) /* SunOS Specific */
-//#define __TIOCSETN        _IOW('t', 10, struct sgttyb) /* SunOS Specific */
+/*#define __TIOCHPCL        _IO('t', 2) /* SunOS Specific */ */
+/*#define __TIOCMODG        _IOR('t', 3, int) /* SunOS Specific */ */
+/*#define __TIOCMODS        _IOW('t', 4, int) /* SunOS Specific */ */
+/*#define __TIOCGETP        _IOR('t', 8, struct sgttyb) /* SunOS Specific */ */
+/*#define __TIOCSETP        _IOW('t', 9, struct sgttyb) /* SunOS Specific */ */
+/*#define __TIOCSETN        _IOW('t', 10, struct sgttyb) /* SunOS Specific */ */
 #define TARGET_TIOCEXCL	TARGET_IO('t', 13)
 #define TARGET_TIOCNXCL	TARGET_IO('t', 14)
-//#define __TIOCFLUSH       _IOW('t', 16, int) /* SunOS Specific */
-//#define __TIOCSETC        _IOW('t', 17, struct tchars) /* SunOS Specific */
-//#define __TIOCGETC        _IOR('t', 18, struct tchars) /* SunOS Specific */
-//#define __TIOCTCNTL       _IOW('t', 32, int) /* SunOS Specific */
-//#define __TIOCSIGNAL      _IOW('t', 33, int) /* SunOS Specific */
-//#define __TIOCSETX        _IOW('t', 34, int) /* SunOS Specific */
-//#define __TIOCGETX        _IOR('t', 35, int) /* SunOS Specific */
+/*#define __TIOCFLUSH       _IOW('t', 16, int) /* SunOS Specific */ */
+/*#define __TIOCSETC        _IOW('t', 17, struct tchars) /* SunOS Specific */ */
+/*#define __TIOCGETC        _IOR('t', 18, struct tchars) /* SunOS Specific */ */
+/*#define __TIOCTCNTL       _IOW('t', 32, int) /* SunOS Specific */ */
+/*#define __TIOCSIGNAL      _IOW('t', 33, int) /* SunOS Specific */ */
+/*#define __TIOCSETX        _IOW('t', 34, int) /* SunOS Specific */ */
+/*#define __TIOCGETX        _IOR('t', 35, int) /* SunOS Specific */ */
 #define TARGET_TIOCCONS	TARGET_IO('t', 36)
-//#define __TIOCSSIZE     _IOW('t', 37, struct sunos_ttysize) /* SunOS Specific */
-//#define __TIOCGSIZE     _IOR('t', 38, struct sunos_ttysize) /* SunOS Specific */
+/*#define __TIOCSSIZE     _IOW('t', 37, struct sunos_ttysize) /* SunOS Specific */ */
+/*#define __TIOCGSIZE     _IOR('t', 38, struct sunos_ttysize) /* SunOS Specific */ */
 #define TARGET_TIOCGSOFTCAR	TARGET_IOR('t', 100, int)
 #define TARGET_TIOCSSOFTCAR	TARGET_IOW('t', 101, int)
-//#define __TIOCUCNTL       _IOW('t', 102, int) /* SunOS Specific */
+/*#define __TIOCUCNTL       _IOW('t', 102, int) /* SunOS Specific */ */
 #define TARGET_TIOCSWINSZ	TARGET_IOW('t', 103, struct winsize)
 #define TARGET_TIOCGWINSZ	TARGET_IOR('t', 104, struct winsize)
-//#define __TIOCREMOTE      _IOW('t', 105, int) /* SunOS Specific */
+/*#define __TIOCREMOTE      _IOW('t', 105, int) /* SunOS Specific */ */
 #define TARGET_TIOCMGET	TARGET_IOR('t', 106, int)
 #define TARGET_TIOCMBIC	TARGET_IOW('t', 107, int)
 #define TARGET_TIOCMBIS	TARGET_IOW('t', 108, int)
@@ -227,20 +227,20 @@ struct target_termios {
 #define TARGET_TIOCNOTTY	TARGET_IO('t', 113)
 #define TARGET_TIOCSTI		TARGET_IOW('t', 114, char)
 #define TARGET_TIOCOUTQ	TARGET_IOR('t', 115, int)
-//#define __TIOCGLTC        _IOR('t', 116, struct ltchars) /* SunOS Specific */
-//#define __TIOCSLTC        _IOW('t', 117, struct ltchars) /* SunOS Specific */
+/*#define __TIOCGLTC        _IOR('t', 116, struct ltchars) /* SunOS Specific */ */
+/*#define __TIOCSLTC        _IOW('t', 117, struct ltchars) /* SunOS Specific */ */
 /* 118 is the non-posix setpgrp tty ioctl */
 /* 119 is the non-posix getpgrp tty ioctl */
-//#define __TIOCCDTR        TARGET_IO('t', 120) /* SunOS Specific */
-//#define __TIOCSDTR        TARGET_IO('t', 121) /* SunOS Specific */
+/*#define __TIOCCDTR        TARGET_IO('t', 120) /* SunOS Specific */ */
+/*#define __TIOCSDTR        TARGET_IO('t', 121) /* SunOS Specific */ */
 #define TARGET_TIOCCBRK        TARGET_IO('t', 122)
 #define TARGET_TIOCSBRK        TARGET_IO('t', 123)
-//#define __TIOCLGET        TARGET_IOW('t', 124, int) /* SunOS Specific */
-//#define __TIOCLSET        TARGET_IOW('t', 125, int) /* SunOS Specific */
-//#define __TIOCLBIC        TARGET_IOW('t', 126, int) /* SunOS Specific */
-//#define __TIOCLBIS        TARGET_IOW('t', 127, int) /* SunOS Specific */
-//#define __TIOCISPACE      TARGET_IOR('t', 128, int) /* SunOS Specific */
-//#define __TIOCISIZE       TARGET_IOR('t', 129, int) /* SunOS Specific */
+/*#define __TIOCLGET        TARGET_IOW('t', 124, int) /* SunOS Specific */ */
+/*#define __TIOCLSET        TARGET_IOW('t', 125, int) /* SunOS Specific */ */
+/*#define __TIOCLBIC        TARGET_IOW('t', 126, int) /* SunOS Specific */ */
+/*#define __TIOCLBIS        TARGET_IOW('t', 127, int) /* SunOS Specific */ */
+/*#define __TIOCISPACE      TARGET_IOR('t', 128, int) /* SunOS Specific */ */
+/*#define __TIOCISIZE       TARGET_IOR('t', 129, int) /* SunOS Specific */ */
 #define TARGET_TIOCSPGRP	TARGET_IOW('t', 130, int)
 #define TARGET_TIOCGPGRP	TARGET_IOR('t', 131, int)
 #define TARGET_TIOCSCTTY	TARGET_IO('t', 132)
@@ -261,8 +261,8 @@ struct target_termios {
 /* SCARY Rutgers local SunOS kernel hackery, perhaps I will support it
  * someday.  This is completely bogus, I know...
  */
-//#define __TCGETSTAT       TARGET_IO('T', 200) /* Rutgers specific */
-//#define __TCSETSTAT       TARGET_IO('T', 201) /* Rutgers specific */
+/*#define __TCGETSTAT       TARGET_IO('T', 200) /* Rutgers specific */ */
+/*#define __TCSETSTAT       TARGET_IO('T', 201) /* Rutgers specific */ */
 
 /* Linux specific, no SunOS equivalent. */
 #define TARGET_TIOCLINUX	0x541C

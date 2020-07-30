@@ -36,7 +36,7 @@
 #include "trace.h"
 #include "hw/qdev-properties.h"
 
-//#define DEBUG_SERIAL
+/*#define DEBUG_SERIAL */
 
 #define UART_LCR_DLAB	0x80	/* Divisor latch access bit */
 

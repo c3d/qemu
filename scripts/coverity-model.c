@@ -72,8 +72,8 @@ MemTxResult address_space_read(AddressSpace *as, hwaddr addr,
                                uint8_t *buf, int len)
 {
     MemTxResult result;
-    // TODO: investigate impact of treating reads as producing
-    // tainted data, with __coverity_tainted_data_argument__(buf).
+    /* TODO: investigate impact of treating reads as producing */
+    /* tainted data, with __coverity_tainted_data_argument__(buf). */
     __bufwrite(buf, len);
     return result;
 }

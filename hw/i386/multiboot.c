@@ -33,7 +33,7 @@
 #include "qemu/error-report.h"
 
 /* Show multiboot debug output */
-//#define DEBUG_MULTIBOOT
+/*#define DEBUG_MULTIBOOT */
 
 #ifdef DEBUG_MULTIBOOT
 #define mb_debug(a...) error_report(a)

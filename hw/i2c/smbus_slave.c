@@ -19,7 +19,7 @@
 #include "migration/vmstate.h"
 #include "qemu/module.h"
 
-//#define DEBUG_SMBUS 1
+/*#define DEBUG_SMBUS 1 */
 
 #ifdef DEBUG_SMBUS
 #define DPRINTF(fmt, ...) \

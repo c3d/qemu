@@ -17,7 +17,7 @@
 #include "qemu/module.h"
 #include "ui/console.h"
 
-//#define DEBUG_SSD0303 1
+/*#define DEBUG_SSD0303 1 */
 
 #ifdef DEBUG_SSD0303
 #define DPRINTF(fmt, ...) \

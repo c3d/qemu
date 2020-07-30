@@ -35,7 +35,7 @@
 #define ISA_DEBUGCON_DEVICE(obj) \
      OBJECT_CHECK(ISADebugconState, (obj), TYPE_ISA_DEBUGCON_DEVICE)
 
-//#define DEBUG_DEBUGCON
+/*#define DEBUG_DEBUGCON */
 
 typedef struct DebugconState {
     MemoryRegion io;

@@ -153,8 +153,8 @@ static void ref405ep_init(MachineState *machine)
     hwaddr ram_bases[2], ram_sizes[2];
     target_ulong sram_size;
     long bios_size;
-    //int phy_addr = 0;
-    //static int phy_addr = 1;
+    /*int phy_addr = 0; */
+    /*static int phy_addr = 1; */
     target_ulong kernel_base, initrd_base;
     long kernel_size, initrd_size;
     int linux_boot;

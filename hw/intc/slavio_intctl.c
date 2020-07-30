@@ -31,7 +31,7 @@
 #include "hw/irq.h"
 #include "trace.h"
 
-//#define DEBUG_IRQ_COUNT
+/*#define DEBUG_IRQ_COUNT */
 
 /*
  * Registers of interrupt controller in sun4m.
@@ -86,7 +86,7 @@ typedef struct SLAVIO_INTCTLState {
 
 static void slavio_check_interrupts(SLAVIO_INTCTLState *s, int set_irqs);
 
-// per-cpu interrupt controller
+/* per-cpu interrupt controller */
 static uint64_t slavio_intctl_mem_readl(void *opaque, hwaddr addr,
                                         unsigned size)
 {
@@ -116,13 +116,13 @@ static void slavio_intctl_mem_writel(void *opaque, hwaddr addr,
     saddr = addr >> 2;
     trace_slavio_intctl_mem_writel(s->cpu, addr, val);
     switch (saddr) {
-    case 1: // clear pending softints
+    case 1: /*  clear pending softints */
         val &= CPU_SOFTIRQ_MASK | CPU_IRQ_INT15_IN;
         s->intreg_pending &= ~val;
         slavio_check_interrupts(s->master, 1);
         trace_slavio_intctl_mem_writel_clear(s->cpu, val, s->intreg_pending);
         break;
-    case 2: // set softint
+    case 2: /*  set softint */
         val &= CPU_SOFTIRQ_MASK;
         s->intreg_pending |= val;
         slavio_check_interrupts(s->master, 1);
@@ -143,7 +143,7 @@ static const MemoryRegionOps slavio_intctl_mem_ops = {
     },
 };
 
-// master system interrupt controller
+/* master system interrupt controller */
 static uint64_t slavio_intctlm_mem_readl(void *opaque, hwaddr addr,
                                          unsigned size)
 {
@@ -179,15 +179,15 @@ static void slavio_intctlm_mem_writel(void *opaque, hwaddr addr,
     saddr = addr >> 2;
     trace_slavio_intctlm_mem_writel(addr, val);
     switch (saddr) {
-    case 2: // clear (enable)
-        // Force clear unused bits
+    case 2: /*  clear (enable) */
+        /* Force clear unused bits */
         val &= MASTER_IRQ_MASK;
         s->intregm_disabled &= ~val;
         trace_slavio_intctlm_mem_writel_enable(val, s->intregm_disabled);
         slavio_check_interrupts(s, 1);
         break;
-    case 3: // set (disable; doesn't affect pending)
-        // Force clear unused bits
+    case 3: /*  set (disable; doesn't affect pending) */
+        /* Force clear unused bits */
         val &= MASTER_IRQ_MASK;
         s->intregm_disabled |= val;
         slavio_check_interrupts(s, 1);

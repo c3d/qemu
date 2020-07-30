@@ -39,9 +39,9 @@
 #define REDOLOG_TYPE "Redolog"
 #define GROWING_TYPE "Growing"
 
-// not allocated: 0xffffffff
+/* not allocated: 0xffffffff */
 
-// always little-endian
+/* always little-endian */
 struct bochs_header {
     char magic[32];     /* "Bochs Virtual HD Image" */
     char type[16];      /* "Redolog" */
@@ -211,7 +211,7 @@ static int64_t seek_to_sector(BlockDriverState *bs, int64_t sector_num)
     char bitmap_entry;
     int ret;
 
-    // seek to sector
+    /* seek to sector */
     extent_index = offset / s->extent_size;
     extent_offset = (offset % s->extent_size) / 512;
 

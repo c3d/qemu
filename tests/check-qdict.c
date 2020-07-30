@@ -43,7 +43,7 @@ static void qdict_put_obj_test(void)
 
     qdict = qdict_new();
 
-    // key "" will have tdb hash 12345
+    /* key "" will have tdb hash 12345 */
     qdict_put_int(qdict, "", num);
 
     g_assert(qdict_size(qdict) == 1);
@@ -296,11 +296,11 @@ static void qdict_stress_test(void)
     test_file = fopen(test_file_path, "r");
     g_assert(test_file != NULL);
 
-    // Create the dict
+    /* Create the dict */
     qdict = qdict_new();
     g_assert(qdict != NULL);
 
-    // Add everything from the test file
+    /* Add everything from the test file */
     for (lines = 0;; lines++) {
         value = read_line(test_file, key);
         if (!value)
@@ -310,7 +310,7 @@ static void qdict_stress_test(void)
     }
     g_assert(qdict_size(qdict) == lines);
 
-    // Check if everything is really in there
+    /* Check if everything is really in there */
     reset_file(test_file);
     for (;;) {
         const char *str1, *str2;
@@ -329,7 +329,7 @@ static void qdict_stress_test(void)
         qobject_unref(value);
     }
 
-    // Delete everything
+    /* Delete everything */
     reset_file(test_file);
     for (;;) {
         value = read_line(test_file, key);

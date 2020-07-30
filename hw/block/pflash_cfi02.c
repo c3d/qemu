@@ -884,7 +884,7 @@ static void pflash_cfi02_realize(DeviceState *dev, Error **errp)
     pfl->cfi_table[0x29] = 0x00;
     /* Max number of bytes in multi-bytes write */
     /* XXX: disable buffered write as it's not supported */
-    //    pfl->cfi_table[0x2A] = 0x05;
+    /*    pfl->cfi_table[0x2A] = 0x05; */
     pfl->cfi_table[0x2A] = 0x00;
     pfl->cfi_table[0x2B] = 0x00;
     /* Number of erase block regions */

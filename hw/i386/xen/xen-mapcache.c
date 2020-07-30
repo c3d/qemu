@@ -22,7 +22,7 @@
 #include "trace.h"
 
 
-//#define MAPCACHE_DEBUG
+/*#define MAPCACHE_DEBUG */
 
 #ifdef MAPCACHE_DEBUG
 #  define DPRINTF(fmt, ...) do { \

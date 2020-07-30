@@ -2340,8 +2340,8 @@ floatx80 floatx80_etoxm1(floatx80 a, float_status *status)
                 m--;
             }
             m1 = -m;
-            /*m += 0x3FFF; // biased exponent of 2^(M) */
-            /*m1 += 0x3FFF; // biased exponent of -2^(-M) */
+            /*m += 0x3FFF; /*  biased exponent of 2^(M) */ */
+            /*m1 += 0x3FFF; /*  biased exponent of -2^(-M) */ */
 
             fp2 = fp0; /* N */
             fp0 = floatx80_mul(fp0, float32_to_floatx80(

@@ -47,13 +47,13 @@
 
 #include "pcnet.h"
 
-//#define PCNET_DEBUG
-//#define PCNET_DEBUG_IO
-//#define PCNET_DEBUG_BCR
-//#define PCNET_DEBUG_CSR
-//#define PCNET_DEBUG_RMD
-//#define PCNET_DEBUG_TMD
-//#define PCNET_DEBUG_MATCH
+/*#define PCNET_DEBUG */
+/*#define PCNET_DEBUG_IO */
+/*#define PCNET_DEBUG_BCR */
+/*#define PCNET_DEBUG_CSR */
+/*#define PCNET_DEBUG_RMD */
+/*#define PCNET_DEBUG_TMD */
+/*#define PCNET_DEBUG_MATCH */
 
 
 struct qemu_ether_header {

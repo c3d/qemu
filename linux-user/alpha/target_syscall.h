@@ -110,7 +110,7 @@ struct target_pt_regs {
 #define TARGET_EHOSTUNREACH	65
 #undef TARGET_ENOTEMPTY
 #define TARGET_ENOTEMPTY	66
-// Unused			67
+/* Unused			67 */
 #undef TARGET_EUSERS
 #define TARGET_EUSERS		68
 #undef TARGET_EDQUOT
@@ -119,12 +119,12 @@ struct target_pt_regs {
 #define TARGET_ESTALE		70
 #undef TARGET_EREMOTE
 #define TARGET_EREMOTE		71
-// Unused			72-76
+/* Unused			72-76 */
 #undef TARGET_ENOLCK
 #define TARGET_ENOLCK		77
 #undef TARGET_ENOSYS
 #define TARGET_ENOSYS		78
-// Unused			79
+/* Unused			79 */
 #undef TARGET_ENOMSG
 #define TARGET_ENOMSG		80
 #undef TARGET_EIDRM
@@ -171,7 +171,7 @@ struct target_pt_regs {
 #define TARGET_EBADRQC		101
 #undef TARGET_EBADSLT
 #define TARGET_EBADSLT		102
-// Unused			103
+/* Unused			103 */
 #undef TARGET_EBFONT
 #define TARGET_EBFONT		104
 #undef TARGET_ENONET
@@ -199,7 +199,7 @@ struct target_pt_regs {
 #undef TARGET_EILSEQ
 #define TARGET_EILSEQ		116
 
-// Same as default		117-121
+/* Same as default		117-121 */
 
 #undef TARGET_ELIBACC
 #define TARGET_ELIBACC		122
@@ -238,14 +238,14 @@ struct target_pt_regs {
 #undef TARGET_EHWPOISON
 #define TARGET_EHWPOISON        139
 
-// For sys_osf_getsysinfo
+/* For sys_osf_getsysinfo */
 #define TARGET_GSI_UACPROC		8
 #define TARGET_GSI_IEEE_FP_CONTROL	45
 #define TARGET_GSI_IEEE_STATE_AT_SIGNAL	46
 #define TARGET_GSI_PROC_TYPE		60
 #define TARGET_GSI_GET_HWRPB		101
 
-// For sys_ofs_setsysinfo
+/* For sys_ofs_setsysinfo */
 #define TARGET_SSI_NVPAIRS		1
 #define TARGET_SSI_IEEE_FP_CONTROL	14
 #define TARGET_SSI_IEEE_STATE_AT_SIGNAL	15

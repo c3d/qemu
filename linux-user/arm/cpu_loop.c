@@ -257,7 +257,7 @@ void cpu_loop(CPUARMState *env)
                       arm_fpe |= BIT_IXC;
 
                     FPSR fpsr = ts->fpa.fpsr;
-                    //printf("fpsr 0x%x, arm_fpe 0x%x\n",fpsr,arm_fpe);
+                    /*printf("fpsr 0x%x, arm_fpe 0x%x\n",fpsr,arm_fpe); */
 
                     if (fpsr & (arm_fpe << 16)) { /* exception enabled? */
                       info.si_signo = TARGET_SIGFPE;

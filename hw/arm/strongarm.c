@@ -46,7 +46,7 @@
 #include "qemu/cutils.h"
 #include "qemu/log.h"
 
-//#define DEBUG
+/*#define DEBUG */
 
 /*
  TODO

@@ -41,7 +41,7 @@ unsigned int DoubleCPDO(const unsigned int opcode)
    float64 rFm, rFn = float64_zero;
    unsigned int Fd, Fm, Fn, nRc = 1;
 
-   //printk("DoubleCPDO(0x%08x)\n",opcode);
+   /*printk("DoubleCPDO(0x%08x)\n",opcode); */
 
    Fm = getFm(opcode);
    if (CONSTANT_FM(opcode))
@@ -61,12 +61,12 @@ unsigned int DoubleCPDO(const unsigned int opcode)
           break;
 
         case typeExtended:
-            // !! patb
-	    //printk("not implemented! why not?\n");
-            //!! ScottB
-            // should never get here, if extended involved
-            // then other operand should be promoted then
-            // ExtendedCPDO called.
+            /* !! patb */
+	    /* printk("not implemented! why not?\n"); */
+            /*!! ScottB */
+            /* should never get here, if extended involved */
+            /* then other operand should be promoted then */
+            /* ExtendedCPDO called. */
             break;
 
         default: return 0;
@@ -235,36 +235,36 @@ unsigned int DoubleCPDO(const unsigned int opcode)
 float64 float64_exp(float64 rFm)
 {
   return rFm;
-//series
+/*series */
 }
 
 float64 float64_ln(float64 rFm)
 {
   return rFm;
-//series
+/*series */
 }
 
 float64 float64_sin(float64 rFm)
 {
   return rFm;
-//series
+/*series */
 }
 
 float64 float64_cos(float64 rFm)
 {
    return rFm;
-   //series
+   /*series */
 }
 
 #if 0
 float64 float64_arcsin(float64 rFm)
 {
-//series
+/*series */
 }
 
 float64 float64_arctan(float64 rFm)
 {
-  //series
+  /*series */
 }
 #endif
 
@@ -281,7 +281,7 @@ float64 float64_tan(float64 rFm)
 float64 float64_arccos(float64 rFm)
 {
 return rFm;
-   //return float64_sub(halfPi,float64_arcsin(rFm));
+   /*return float64_sub(halfPi,float64_arcsin(rFm)); */
 }
 
 float64 float64_pow(float64 rFn,float64 rFm)

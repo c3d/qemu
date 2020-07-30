@@ -41,7 +41,7 @@
 
 #define HEADER_SIZE 512
 
-//#define CACHE
+/*#define CACHE */
 
 enum vhd_type {
     VHD_FIXED           = 2,

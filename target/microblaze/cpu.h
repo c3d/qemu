@@ -73,9 +73,9 @@ typedef struct CPUMBState CPUMBState;
 #define MSR_VMS        (1<<14) /* Virtual Mode Save */
 
 #define MSR_KERNEL      MSR_EE|MSR_VM
-//#define MSR_USER     MSR_KERNEL|MSR_UM|MSR_IE
+/*#define MSR_USER     MSR_KERNEL|MSR_UM|MSR_IE */
 #define MSR_KERNEL_VMS  MSR_EE|MSR_VMS
-//#define MSR_USER_VMS MSR_KERNEL_VMS|MSR_UMS|MSR_IE
+/*#define MSR_USER_VMS MSR_KERNEL_VMS|MSR_UMS|MSR_IE */
 
 /* Exception State Register (ESR) Fields */
 #define          ESR_DIZ       (1<<11) /* Zone Protection */

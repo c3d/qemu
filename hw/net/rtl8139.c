@@ -64,7 +64,7 @@
 #include "sysemu/sysemu.h"
 
 /* debug RTL8139 card */
-//#define DEBUG_RTL8139 1
+/*#define DEBUG_RTL8139 1 */
 
 #define PCI_PERIOD 30    /* 30 ns period = 33.333333 Mhz frequency */
 
@@ -233,22 +233,22 @@ enum tx_config_bits {
 
 /* Transmit Status of All Descriptors (TSAD) Register */
 enum TSAD_bits {
- TSAD_TOK3 = 1<<15, // TOK bit of Descriptor 3
- TSAD_TOK2 = 1<<14, // TOK bit of Descriptor 2
- TSAD_TOK1 = 1<<13, // TOK bit of Descriptor 1
- TSAD_TOK0 = 1<<12, // TOK bit of Descriptor 0
- TSAD_TUN3 = 1<<11, // TUN bit of Descriptor 3
- TSAD_TUN2 = 1<<10, // TUN bit of Descriptor 2
- TSAD_TUN1 = 1<<9, // TUN bit of Descriptor 1
- TSAD_TUN0 = 1<<8, // TUN bit of Descriptor 0
- TSAD_TABT3 = 1<<07, // TABT bit of Descriptor 3
- TSAD_TABT2 = 1<<06, // TABT bit of Descriptor 2
- TSAD_TABT1 = 1<<05, // TABT bit of Descriptor 1
- TSAD_TABT0 = 1<<04, // TABT bit of Descriptor 0
- TSAD_OWN3 = 1<<03, // OWN bit of Descriptor 3
- TSAD_OWN2 = 1<<02, // OWN bit of Descriptor 2
- TSAD_OWN1 = 1<<01, // OWN bit of Descriptor 1
- TSAD_OWN0 = 1<<00, // OWN bit of Descriptor 0
+ TSAD_TOK3 = 1<<15, /*  TOK bit of Descriptor 3 */
+ TSAD_TOK2 = 1<<14, /*  TOK bit of Descriptor 2 */
+ TSAD_TOK1 = 1<<13, /*  TOK bit of Descriptor 1 */
+ TSAD_TOK0 = 1<<12, /*  TOK bit of Descriptor 0 */
+ TSAD_TUN3 = 1<<11, /*  TUN bit of Descriptor 3 */
+ TSAD_TUN2 = 1<<10, /*  TUN bit of Descriptor 2 */
+ TSAD_TUN1 = 1<<9, /*  TUN bit of Descriptor 1 */
+ TSAD_TUN0 = 1<<8, /*  TUN bit of Descriptor 0 */
+ TSAD_TABT3 = 1<<07, /*  TABT bit of Descriptor 3 */
+ TSAD_TABT2 = 1<<06, /*  TABT bit of Descriptor 2 */
+ TSAD_TABT1 = 1<<05, /*  TABT bit of Descriptor 1 */
+ TSAD_TABT0 = 1<<04, /*  TABT bit of Descriptor 0 */
+ TSAD_OWN3 = 1<<03, /*  OWN bit of Descriptor 3 */
+ TSAD_OWN2 = 1<<02, /*  OWN bit of Descriptor 2 */
+ TSAD_OWN1 = 1<<01, /*  OWN bit of Descriptor 1 */
+ TSAD_OWN0 = 1<<00, /*  OWN bit of Descriptor 0 */
 };
 
 
@@ -601,16 +601,16 @@ static void prom9346_shift_clock(EEprom9346 *eeprom)
             if (eeprom->tick == 16)
             {
 #if 1
-        // the FreeBSD drivers (rl and re) don't explicitly toggle
-        // CS between reads (or does setting Cfg9346 to 0 count too?),
-        // so we need to enter wait-for-command state here
+        /* the FreeBSD drivers (rl and re) don't explicitly toggle */
+        /* CS between reads (or does setting Cfg9346 to 0 count too?), */
+        /* so we need to enter wait-for-command state here */
                 eeprom->mode = Chip9346_enter_command_mode;
                 eeprom->input = 0;
                 eeprom->tick = 0;
 
                 DPRINTF("eeprom: +++ end of read, awaiting next command\n");
 #else
-        // original behaviour
+        /* original behaviour */
                 ++eeprom->address;
                 eeprom->address &= EEPROM_9346_ADDR_MASK;
                 eeprom->output = eeprom->contents[eeprom->address];
@@ -1258,10 +1258,10 @@ static void rtl8139_reset(DeviceState *d)
     s->TxConfig = 0;
 
 #if 0
-//    s->TxConfig |= HW_REVID(1, 0, 0, 0, 0, 0, 0); // RTL-8139  HasHltClk
+/*    s->TxConfig |= HW_REVID(1, 0, 0, 0, 0, 0, 0); // RTL-8139  HasHltClk */
     s->clock_enabled = 0;
 #else
-    s->TxConfig |= HW_REVID(1, 1, 1, 0, 1, 1, 0); // RTL-8139C+ HasLWake
+    s->TxConfig |= HW_REVID(1, 1, 1, 0, 1, 1, 0); /*  RTL-8139C+ HasLWake */
     s->clock_enabled = 1;
 #endif
 
@@ -1276,9 +1276,9 @@ static void rtl8139_reset(DeviceState *d)
     s->CpCmd   = 0x0; /* reset C+ mode */
     s->cplus_enabled = 0;
 
-//    s->BasicModeCtrl = 0x3100; // 100Mbps, full duplex, autonegotiation
-//    s->BasicModeCtrl = 0x2100; // 100Mbps, full duplex
-    s->BasicModeCtrl = 0x1000; // autonegotiation
+/*    s->BasicModeCtrl = 0x3100; // 100Mbps, full duplex, autonegotiation */
+/*    s->BasicModeCtrl = 0x2100; // 100Mbps, full duplex */
+    s->BasicModeCtrl = 0x1000; /*  autonegotiation */
 
     rtl8139_reset_phy(s);
 
@@ -2166,7 +2166,7 @@ static int rtl8139_cplus_transmit_one(RTL8139State *s)
 
                 /* a placeholder for checksum calculation routine in tcp case */
                 uint8_t *data_to_checksum     = eth_payload_data + hlen - 12;
-                //                    size_t   data_to_checksum_len = eth_payload_len  - hlen + 12;
+                /*                    size_t   data_to_checksum_len = eth_payload_len  - hlen + 12; */
 
                 /* pointer to TCP header */
                 tcp_header *p_tcp_hdr = (tcp_header*)(eth_payload_data + hlen);
@@ -2276,7 +2276,7 @@ static int rtl8139_cplus_transmit_one(RTL8139State *s)
                 memcpy(saved_ip_header, eth_payload_data, hlen);
 
                 uint8_t *data_to_checksum     = eth_payload_data + hlen - 12;
-                //                    size_t   data_to_checksum_len = eth_payload_len  - hlen + 12;
+                /*                    size_t   data_to_checksum_len = eth_payload_len  - hlen + 12; */
 
                 /* add 4 TCP pseudoheader fields */
                 /* copy IP source and destination fields */
@@ -2739,7 +2739,7 @@ static void rtl8139_io_writeb(void *opaque, uint8_t addr, uint32_t val)
             {
                 DPRINTF("C+ TxPoll high priority transmission (not "
                     "implemented)\n");
-                //rtl8139_cplus_transmit(s);
+                /*rtl8139_cplus_transmit(s); */
             }
             if (val & (1 << 6))
             {

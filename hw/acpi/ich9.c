@@ -41,7 +41,7 @@
 #include "hw/mem/pc-dimm.h"
 #include "hw/mem/nvdimm.h"
 
-//#define DEBUG
+/*#define DEBUG */
 
 #ifdef DEBUG
 #define ICH9_DEBUG(fmt, ...) \

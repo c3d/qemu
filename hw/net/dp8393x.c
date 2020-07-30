@@ -28,7 +28,7 @@
 #include "qemu/timer.h"
 #include <zlib.h>
 
-//#define DEBUG_SONIC
+/*#define DEBUG_SONIC */
 
 #define SONIC_PROM_SIZE 0x1000
 

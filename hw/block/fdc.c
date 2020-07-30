@@ -1250,10 +1250,10 @@ static void fdctrl_external_reset_isa(DeviceState *d)
 
 static void fdctrl_handle_tc(void *opaque, int irq, int level)
 {
-    //FDCtrl *s = opaque;
+    /*FDCtrl *s = opaque; */
 
     if (level) {
-        // XXX
+        /* XXX */
         FLOPPY_DPRINTF("TC pulsed\n");
     }
 }

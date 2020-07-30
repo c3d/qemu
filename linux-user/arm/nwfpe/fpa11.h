@@ -35,7 +35,7 @@ extern CPUARMState *user_registers;
 #define GET_USERREG() (user_registers)
 
 /* Need task_struct */
-//#include <linux/sched.h>
+/*#include <linux/sched.h> */
 
 /* includes */
 #include "fpsr.h"		/* FP control and status register definitions */

@@ -17,7 +17,7 @@
 #include "qemu/module.h"
 #include <zlib.h>
 
-//#define DEBUG_STELLARIS_ENET 1
+/*#define DEBUG_STELLARIS_ENET 1 */
 
 #ifdef DEBUG_STELLARIS_ENET
 #define DPRINTF(fmt, ...) \

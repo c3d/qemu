@@ -2368,9 +2368,9 @@ void HELPER(sve_sel_zpzz_d)(void *vd, void *vn, void *vm,
  *    and        $0x5555, %eax
  *    and        pg, %eax
  *
- * or even aarch64, e.g.
+ * or even aarch64, e..
  *
- *    // mask = 4000 1000 0400 0100 0040 0010 0004 0001
+ *    //  mask = 4000 1000 0400 0100 0040 0010 0004 0001
  *    cmeq       v0.8h, zn, zm
  *    and        v0.8h, v0.8h, mask
  *    addv       h0, v0.8h

@@ -38,10 +38,10 @@
  *         ESEL,   32
  *     }
  *
- *     Method (_EVT, 1, Serialized)  // _EVT: Event
+ *      Method (_EVT, 1, Serialized)  //  _EVT: Event
  *     {
- *         Local0 = ESEL // ESEL = IO memory region which specifies the
- *                       // device type.
+ *         Local0 = ESEL //  ESEL = IO memory region which specifies the
+ *                       //  device type.
  *         If (((Local0 & One) == One))
  *         {
  *             MethodEvent1()

@@ -48,7 +48,7 @@
 #include "sdmmc-internal.h"
 #include "trace.h"
 
-//#define DEBUG_SD 1
+/*#define DEBUG_SD 1 */
 
 typedef enum {
     sd_r0 = 0,    /* no response */

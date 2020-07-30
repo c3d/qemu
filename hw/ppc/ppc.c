@@ -38,8 +38,8 @@
 #include "migration/vmstate.h"
 #include "trace.h"
 
-//#define PPC_DEBUG_IRQ
-//#define PPC_DEBUG_TB
+/*#define PPC_DEBUG_IRQ */
+/*#define PPC_DEBUG_TB */
 
 #ifdef PPC_DEBUG_IRQ
 #  define LOG_IRQ(...) qemu_log_mask(CPU_LOG_INT, ## __VA_ARGS__)

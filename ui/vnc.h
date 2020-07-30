@@ -45,7 +45,7 @@
 #include "vnc-enc-zrle.h"
 #include "ui/kbd-state.h"
 
-// #define _VNC_DEBUG 1
+/* #define _VNC_DEBUG 1 */
 
 #ifdef _VNC_DEBUG
 #define VNC_DEBUG(fmt, ...) do { fprintf(stderr, fmt, ## __VA_ARGS__); } while (0)

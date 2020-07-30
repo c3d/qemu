@@ -999,9 +999,9 @@ static void mvp_init (CPUMIPSState *env, const mips_def_t *def)
        implemented, 5 TCs implemented. */
     env->mvp->CP0_MVPConf0 = (1U << CP0MVPC0_M) | (1 << CP0MVPC0_TLBS) |
                              (0 << CP0MVPC0_GS) | (1 << CP0MVPC0_PCP) |
-// TODO: actually do 2 VPEs.
-//                             (1 << CP0MVPC0_TCA) | (0x1 << CP0MVPC0_PVPE) |
-//                             (0x04 << CP0MVPC0_PTC);
+/* TODO: actually do 2 VPEs. */
+/*                             (1 << CP0MVPC0_TCA) | (0x1 << CP0MVPC0_PVPE) | */
+/*                             (0x04 << CP0MVPC0_PTC); */
                              (1 << CP0MVPC0_TCA) | (0x0 << CP0MVPC0_PVPE) |
                              (0x00 << CP0MVPC0_PTC);
 #if !defined(CONFIG_USER_ONLY)

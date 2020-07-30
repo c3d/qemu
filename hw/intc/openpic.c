@@ -52,7 +52,7 @@
 #include "qemu/timer.h"
 #include "qemu/error-report.h"
 
-//#define DEBUG_OPENPIC
+/*#define DEBUG_OPENPIC */
 
 #ifdef DEBUG_OPENPIC
 static const int debug_openpic = 1;

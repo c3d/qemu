@@ -29,11 +29,11 @@
 #include <sys/mman.h>
 
 #if !defined(__x86_64__)
-//#define TEST_VM86
+/*#define TEST_VM86 */
 #define TEST_SEGS
 #endif
-//#define LINUX_VM86_IOPL_FIX
-//#define TEST_P4_FLAGS
+/*#define LINUX_VM86_IOPL_FIX */
+/*#define TEST_P4_FLAGS */
 #ifdef __SSE__
 #define TEST_SSE
 #define TEST_CMOV  1
@@ -791,7 +791,7 @@ void fpu_clear_exceptions(void)
 
 /* XXX: display exception bits when supported */
 #define FPUS_EMASK 0x0000
-//#define FPUS_EMASK 0x007f
+/*#define FPUS_EMASK 0x007f */
 
 void test_fcmp(double a, double b)
 {

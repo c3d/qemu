@@ -4488,7 +4488,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, see <http://www.gnu.org/licenses/>.  */
 
 /* This is needed to pick up the NAN macro on some systems.  */
-//#define _GNU_SOURCE
+/*#define _GNU_SOURCE */
 
 #ifndef INFINITY
 #ifdef HUGE_VAL

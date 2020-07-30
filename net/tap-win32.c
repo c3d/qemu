@@ -38,9 +38,9 @@
 #include <windows.h>
 #include <winioctl.h>
 
-//=============
-// TAP IOCTLs
-//=============
+/*============= */
+/* TAP IOCTLs */
+/*============= */
 
 #define TAP_CONTROL_CODE(request,method) \
   CTL_CODE (FILE_DEVICE_UNKNOWN, request, method, FILE_ANY_ACCESS)
@@ -55,27 +55,27 @@
 #define TAP_IOCTL_GET_LOG_LINE          TAP_CONTROL_CODE (8, METHOD_BUFFERED)
 #define TAP_IOCTL_CONFIG_DHCP_SET_OPT   TAP_CONTROL_CODE (9, METHOD_BUFFERED)
 
-//=================
-// Registry keys
-//=================
+/*================= */
+/* Registry keys */
+/*================= */
 
 #define ADAPTER_KEY "SYSTEM\\CurrentControlSet\\Control\\Class\\{4D36E972-E325-11CE-BFC1-08002BE10318}"
 
 #define NETWORK_CONNECTIONS_KEY "SYSTEM\\CurrentControlSet\\Control\\Network\\{4D36E972-E325-11CE-BFC1-08002BE10318}"
 
-//======================
-// Filesystem prefixes
-//======================
+/*====================== */
+/* Filesystem prefixes */
+/*====================== */
 
 #define USERMODEDEVICEDIR "\\\\.\\Global\\"
 #define TAPSUFFIX         ".tap"
 
 
-//======================
-// Compile time configuration
-//======================
+/*====================== */
+/* Compile time configuration */
+/*====================== */
 
-//#define DEBUG_TAP_WIN32
+/*#define DEBUG_TAP_WIN32 */
 
 /* FIXME: The asynch write path appears to be broken at
  * present. WriteFile() ignores the lpNumberOfBytesWritten parameter
@@ -122,7 +122,7 @@ static tun_buffer_t* get_buffer_from_free_list(tap_win32_overlapped_t* const ove
     WaitForSingleObject(overlapped->free_list_semaphore, INFINITE);
     EnterCriticalSection(&overlapped->free_list_cs);
     buffer = overlapped->free_list;
-//    assert(buffer != NULL);
+/*    assert(buffer != NULL); */
     overlapped->free_list = buffer->next;
     LeaveCriticalSection(&overlapped->free_list_cs);
     buffer->next = NULL;
@@ -143,12 +143,12 @@ static tun_buffer_t* get_buffer_from_output_queue(tap_win32_overlapped_t* const 
     tun_buffer_t* buffer = NULL;
     DWORD result, timeout = block ? INFINITE : 0L;
 
-    // Non-blocking call
+    /* Non-blocking call */
     result = WaitForSingleObject(overlapped->output_queue_semaphore, timeout);
 
     switch (result)
     {
-        // The semaphore object was signaled.
+        /* The semaphore object was signaled. */
         case WAIT_OBJECT_0:
             EnterCriticalSection(&overlapped->output_queue_cs);
 
@@ -162,9 +162,9 @@ static tun_buffer_t* get_buffer_from_output_queue(tap_win32_overlapped_t* const 
             LeaveCriticalSection(&overlapped->output_queue_cs);
             break;
 
-        // Semaphore was nonsignaled, so a time-out occurred.
+        /* Semaphore was nonsignaled, so a time-out occurred. */
         case WAIT_TIMEOUT:
-            // Cannot open another window.
+            /* Cannot open another window. */
             break;
     }
 
@@ -424,20 +424,20 @@ static void tap_win32_overlapped_init(tap_win32_overlapped_t* const overlapped, 
     InitializeCriticalSection(&overlapped->free_list_cs);
 
     overlapped->output_queue_semaphore = CreateSemaphore(
-        NULL,   // default security attributes
-        0,   // initial count
-        TUN_MAX_BUFFER_COUNT,   // maximum count
-        NULL);  // unnamed semaphore
+        NULL,   /*  default security attributes */
+        0,   /*  initial count */
+        TUN_MAX_BUFFER_COUNT,   /*  maximum count */
+        NULL);  /*  unnamed semaphore */
 
     if(!overlapped->output_queue_semaphore)  {
         fprintf(stderr, "error creating output queue semaphore!\n");
     }
 
     overlapped->free_list_semaphore = CreateSemaphore(
-        NULL,   // default security attributes
-        TUN_MAX_BUFFER_COUNT,   // initial count
-        TUN_MAX_BUFFER_COUNT,   // maximum count
-        NULL);  // unnamed semaphore
+        NULL,   /*  default security attributes */
+        TUN_MAX_BUFFER_COUNT,   /*  initial count */
+        TUN_MAX_BUFFER_COUNT,   /*  maximum count */
+        NULL);  /*  unnamed semaphore */
 
     if(!overlapped->free_list_semaphore)  {
         fprintf(stderr, "error creating free list semaphore!\n");

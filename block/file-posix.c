@@ -49,7 +49,7 @@
 #include <IOKit/storage/IOMediaBSDClient.h>
 #include <IOKit/storage/IOMedia.h>
 #include <IOKit/storage/IOCDMedia.h>
-//#include <IOKit/storage/IOCDTypes.h>
+/*#include <IOKit/storage/IOCDTypes.h> */
 #include <IOKit/storage/IODVDMedia.h>
 #include <CoreFoundation/CoreFoundation.h>
 #endif

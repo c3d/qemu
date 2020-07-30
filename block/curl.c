@@ -35,7 +35,7 @@
 #include "qemu/cutils.h"
 #include "trace.h"
 
-// #define DEBUG_VERBOSE
+/* #define DEBUG_VERBOSE */
 
 #if LIBCURL_VERSION_NUM >= 0x071000
 /* The multi interface timer callback was introduced in 7.16.0 */
@@ -292,7 +292,7 @@ static bool curl_find_buf(BDRVCURLState *s, uint64_t start, uint64_t len,
         if (!state->buf_off)
             continue;
 
-        // Does the existing buffer cover our section?
+        /* Does the existing buffer cover our section? */
         if ((start >= state->buf_start) &&
             (start <= buf_end) &&
             (clamped_end >= state->buf_start) &&
@@ -308,7 +308,7 @@ static bool curl_find_buf(BDRVCURLState *s, uint64_t start, uint64_t len,
             return true;
         }
 
-        // Wait for unfinished chunks
+        /* Wait for unfinished chunks */
         if (state->in_use &&
             (start >= state->buf_start) &&
             (start <= buf_fend) &&
@@ -780,7 +780,7 @@ static int curl_open(BlockDriverState *bs, QDict *options, int flags,
         goto out_noclean;
     }
 
-    // Get file size
+    /* Get file size */
 
     if (curl_init_state(s, state) < 0) {
         goto out;
@@ -862,13 +862,15 @@ static void curl_setup_preadv(BlockDriverState *bs, CURLAIOCB *acb)
 
     qemu_mutex_lock(&s->mutex);
 
-    // In case we have the requested data already (e.g. read-ahead),
-    // we can just call the callback and be done.
+    /*
+     * In case we have the requested data already (e.g. read-ahead),
+     * we can just call the callback and be done.
+     */
     if (curl_find_buf(s, start, acb->bytes, acb)) {
         goto out;
     }
 
-    // No cache found, so let's start a new request
+    /* No cache found, so let's start a new request */
     for (;;) {
         state = curl_find_state(s);
         if (state) {

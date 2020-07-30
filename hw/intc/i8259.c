@@ -32,9 +32,9 @@
 #include "trace.h"
 
 /* debug PIC */
-//#define DEBUG_PIC
+/*#define DEBUG_PIC */
 
-//#define DEBUG_IRQ_LATENCY
+/*#define DEBUG_IRQ_LATENCY */
 
 #define TYPE_I8259 "isa-i8259"
 #define PIC_CLASS(class) OBJECT_CLASS_CHECK(PICClass, (class), TYPE_I8259)

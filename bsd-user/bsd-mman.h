@@ -117,5 +117,5 @@
 
 #define TARGET_OPENBSD_MAP_FLAGMASK     0x17f7
 
-// XXX
+/* XXX */
 #define TARGET_BSD_MAP_FLAGMASK         0x3ff7

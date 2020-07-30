@@ -28,7 +28,7 @@
 #include "qemu-common.h"
 #include "user/syscall-trace.h"
 
-//#define DEBUG
+/*#define DEBUG */
 
 static abi_ulong target_brk;
 static abi_ulong target_original_brk;

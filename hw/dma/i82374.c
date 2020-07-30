@@ -33,7 +33,7 @@
 #define TYPE_I82374 "i82374"
 #define I82374(obj) OBJECT_CHECK(I82374State, (obj), TYPE_I82374)
 
-//#define DEBUG_I82374
+/*#define DEBUG_I82374 */
 
 #ifdef DEBUG_I82374
 #define DPRINTF(fmt, ...) \

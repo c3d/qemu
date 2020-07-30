@@ -68,7 +68,7 @@
 /* Code configuration options. */
 
 /* Enable debug messages. */
-//~ #define CONFIG_VDI_DEBUG
+/*~ #define CONFIG_VDI_DEBUG */
 
 /* Support write operations on VDI images. */
 #define CONFIG_VDI_WRITE
@@ -76,7 +76,7 @@
 /* Support non-standard block (cluster) size. This is untested.
  * Maybe it will be needed for very large images.
  */
-//~ #define CONFIG_VDI_BLOCK_SIZE
+/*~ #define CONFIG_VDI_BLOCK_SIZE */
 
 /* Support static (fixed, pre-allocated) images. */
 #define CONFIG_VDI_STATIC_IMAGE

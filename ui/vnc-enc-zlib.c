@@ -50,7 +50,7 @@ static void vnc_zlib_start(VncState *vs)
 {
     buffer_reset(&vs->zlib.zlib);
 
-    // make the output buffer be the zlib buffer, so we can compress it later
+    /* make the output buffer be the zlib buffer, so we can compress it later */
     vs->zlib.tmp = vs->output;
     vs->output = vs->zlib.zlib;
 }
@@ -60,14 +60,14 @@ static int vnc_zlib_stop(VncState *vs)
     z_streamp zstream = &vs->zlib.stream;
     int previous_out;
 
-    // switch back to normal output/zlib buffers
+    /* switch back to normal output/zlib buffers */
     vs->zlib.zlib = vs->output;
     vs->output = vs->zlib.tmp;
 
-    // compress the zlib buffer
+    /* compress the zlib buffer */
 
-    // initialize the stream
-    // XXX need one stream per session
+    /* initialize the stream */
+    /* XXX need one stream per session */
     if (zstream->opaque != vs) {
         int err;
 
@@ -97,10 +97,10 @@ static int vnc_zlib_stop(VncState *vs)
         vs->zlib.level = vs->tight->compression;
     }
 
-    // reserve memory in output buffer
+    /* reserve memory in output buffer */
     buffer_reserve(&vs->output, vs->zlib.zlib.offset + 64);
 
-    // set pointers
+    /* set pointers */
     zstream->next_in = vs->zlib.zlib.buffer;
     zstream->avail_in = vs->zlib.zlib.offset;
     zstream->next_out = vs->output.buffer + vs->output.offset;
@@ -108,7 +108,7 @@ static int vnc_zlib_stop(VncState *vs)
     previous_out = zstream->avail_out;
     zstream->data_type = Z_BINARY;
 
-    // start encoding
+    /* start encoding */
     if (deflate(zstream, Z_SYNC_FLUSH) != Z_OK) {
         fprintf(stderr, "VNC: error during zlib compression\n");
         return -1;
@@ -124,11 +124,11 @@ int vnc_zlib_send_framebuffer_update(VncState *vs, int x, int y, int w, int h)
 
     vnc_framebuffer_update(vs, x, y, w, h, VNC_ENCODING_ZLIB);
 
-    // remember where we put in the follow-up size
+    /* remember where we put in the follow-up size */
     old_offset = vs->output.offset;
     vnc_write_s32(vs, 0);
 
-    // compress the stream
+    /* compress the stream */
     vnc_zlib_start(vs);
     vnc_raw_send_framebuffer_update(vs, x, y, w, h);
     bytes_written = vnc_zlib_stop(vs);
@@ -136,7 +136,7 @@ int vnc_zlib_send_framebuffer_update(VncState *vs, int x, int y, int w, int h)
     if (bytes_written == -1)
         return 0;
 
-    // hack in the size
+    /* hack in the size */
     new_offset = vs->output.offset;
     vs->output.offset = old_offset;
     vnc_write_u32(vs, bytes_written);

@@ -52,7 +52,7 @@
  *    - optimize bitblt functions
  */
 
-//#define DEBUG_CIRRUS
+/*#define DEBUG_CIRRUS */
 
 /***************************************
  *
@@ -60,7 +60,7 @@
  *
  ***************************************/
 
-// sequencer 0x07
+/* sequencer 0x07 */
 #define CIRRUS_SR7_BPP_VGA            0x00
 #define CIRRUS_SR7_BPP_SVGA           0x01
 #define CIRRUS_SR7_BPP_MASK           0x0e
@@ -71,31 +71,31 @@
 #define CIRRUS_SR7_BPP_32             0x08
 #define CIRRUS_SR7_ISAADDR_MASK       0xe0
 
-// sequencer 0x0f
+/* sequencer 0x0f */
 #define CIRRUS_MEMSIZE_512k        0x08
 #define CIRRUS_MEMSIZE_1M          0x10
 #define CIRRUS_MEMSIZE_2M          0x18
-#define CIRRUS_MEMFLAGS_BANKSWITCH 0x80	// bank switching is enabled.
+#define CIRRUS_MEMFLAGS_BANKSWITCH 0x80	/* bank switching is enabled. */
 
-// sequencer 0x12
+/* sequencer 0x12 */
 #define CIRRUS_CURSOR_SHOW         0x01
 #define CIRRUS_CURSOR_HIDDENPEL    0x02
-#define CIRRUS_CURSOR_LARGE        0x04	// 64x64 if set, 32x32 if clear
+#define CIRRUS_CURSOR_LARGE        0x04	/* 64x64 if set, 32x32 if clear */
 
-// sequencer 0x17
+/* sequencer 0x17 */
 #define CIRRUS_BUSTYPE_VLBFAST   0x10
 #define CIRRUS_BUSTYPE_PCI       0x20
 #define CIRRUS_BUSTYPE_VLBSLOW   0x30
 #define CIRRUS_BUSTYPE_ISA       0x38
 #define CIRRUS_MMIO_ENABLE       0x04
-#define CIRRUS_MMIO_USE_PCIADDR  0x40	// 0xb8000 if cleared.
+#define CIRRUS_MMIO_USE_PCIADDR  0x40	/* 0xb8000 if cleared. */
 #define CIRRUS_MEMSIZEEXT_DOUBLE 0x80
 
-// control 0x0b
+/* control 0x0b */
 #define CIRRUS_BANKING_DUAL             0x01
-#define CIRRUS_BANKING_GRANULARITY_16K  0x20	// set:16k, clear:4k
+#define CIRRUS_BANKING_GRANULARITY_16K  0x20	/* set:16k, clear:4k */
 
-// control 0x30
+/* control 0x30 */
 #define CIRRUS_BLTMODE_BACKWARDS        0x01
 #define CIRRUS_BLTMODE_MEMSYSDEST       0x02
 #define CIRRUS_BLTMODE_MEMSYSSRC        0x04
@@ -108,14 +108,14 @@
 #define CIRRUS_BLTMODE_PIXELWIDTH24     0x20
 #define CIRRUS_BLTMODE_PIXELWIDTH32     0x30
 
-// control 0x31
+/* control 0x31 */
 #define CIRRUS_BLT_BUSY                 0x01
 #define CIRRUS_BLT_START                0x02
 #define CIRRUS_BLT_RESET                0x04
 #define CIRRUS_BLT_FIFOUSED             0x10
 #define CIRRUS_BLT_AUTOSTART            0x80
 
-// control 0x32
+/* control 0x32 */
 #define CIRRUS_ROP_0                    0x00
 #define CIRRUS_ROP_SRC_AND_DST          0x05
 #define CIRRUS_ROP_NOP                  0x06
@@ -136,41 +136,41 @@
 #define CIRRUS_ROP_NOP_INDEX 2
 #define CIRRUS_ROP_SRC_INDEX 5
 
-// control 0x33
+/* control 0x33 */
 #define CIRRUS_BLTMODEEXT_SOLIDFILL        0x04
 #define CIRRUS_BLTMODEEXT_COLOREXPINV      0x02
 #define CIRRUS_BLTMODEEXT_DWORDGRANULARITY 0x01
 
-// memory-mapped IO
-#define CIRRUS_MMIO_BLTBGCOLOR        0x00	// dword
-#define CIRRUS_MMIO_BLTFGCOLOR        0x04	// dword
-#define CIRRUS_MMIO_BLTWIDTH          0x08	// word
-#define CIRRUS_MMIO_BLTHEIGHT         0x0a	// word
-#define CIRRUS_MMIO_BLTDESTPITCH      0x0c	// word
-#define CIRRUS_MMIO_BLTSRCPITCH       0x0e	// word
-#define CIRRUS_MMIO_BLTDESTADDR       0x10	// dword
-#define CIRRUS_MMIO_BLTSRCADDR        0x14	// dword
-#define CIRRUS_MMIO_BLTWRITEMASK      0x17	// byte
-#define CIRRUS_MMIO_BLTMODE           0x18	// byte
-#define CIRRUS_MMIO_BLTROP            0x1a	// byte
-#define CIRRUS_MMIO_BLTMODEEXT        0x1b	// byte
-#define CIRRUS_MMIO_BLTTRANSPARENTCOLOR 0x1c	// word?
-#define CIRRUS_MMIO_BLTTRANSPARENTCOLORMASK 0x20	// word?
-#define CIRRUS_MMIO_LINEARDRAW_START_X 0x24	// word
-#define CIRRUS_MMIO_LINEARDRAW_START_Y 0x26	// word
-#define CIRRUS_MMIO_LINEARDRAW_END_X  0x28	// word
-#define CIRRUS_MMIO_LINEARDRAW_END_Y  0x2a	// word
-#define CIRRUS_MMIO_LINEARDRAW_LINESTYLE_INC 0x2c	// byte
-#define CIRRUS_MMIO_LINEARDRAW_LINESTYLE_ROLLOVER 0x2d	// byte
-#define CIRRUS_MMIO_LINEARDRAW_LINESTYLE_MASK 0x2e	// byte
-#define CIRRUS_MMIO_LINEARDRAW_LINESTYLE_ACCUM 0x2f	// byte
-#define CIRRUS_MMIO_BRESENHAM_K1      0x30	// word
-#define CIRRUS_MMIO_BRESENHAM_K3      0x32	// word
-#define CIRRUS_MMIO_BRESENHAM_ERROR   0x34	// word
-#define CIRRUS_MMIO_BRESENHAM_DELTA_MAJOR 0x36	// word
-#define CIRRUS_MMIO_BRESENHAM_DIRECTION 0x38	// byte
-#define CIRRUS_MMIO_LINEDRAW_MODE     0x39	// byte
-#define CIRRUS_MMIO_BLTSTATUS         0x40	// byte
+/* memory-mapped IO */
+#define CIRRUS_MMIO_BLTBGCOLOR        0x00	/* dword */
+#define CIRRUS_MMIO_BLTFGCOLOR        0x04	/* dword */
+#define CIRRUS_MMIO_BLTWIDTH          0x08	/* word */
+#define CIRRUS_MMIO_BLTHEIGHT         0x0a	/* word */
+#define CIRRUS_MMIO_BLTDESTPITCH      0x0c	/* word */
+#define CIRRUS_MMIO_BLTSRCPITCH       0x0e	/* word */
+#define CIRRUS_MMIO_BLTDESTADDR       0x10	/* dword */
+#define CIRRUS_MMIO_BLTSRCADDR        0x14	/* dword */
+#define CIRRUS_MMIO_BLTWRITEMASK      0x17	/* byte */
+#define CIRRUS_MMIO_BLTMODE           0x18	/* byte */
+#define CIRRUS_MMIO_BLTROP            0x1a	/* byte */
+#define CIRRUS_MMIO_BLTMODEEXT        0x1b	/* byte */
+#define CIRRUS_MMIO_BLTTRANSPARENTCOLOR 0x1c	/* word? */
+#define CIRRUS_MMIO_BLTTRANSPARENTCOLORMASK 0x20	/* word? */
+#define CIRRUS_MMIO_LINEARDRAW_START_X 0x24	/* word */
+#define CIRRUS_MMIO_LINEARDRAW_START_Y 0x26	/* word */
+#define CIRRUS_MMIO_LINEARDRAW_END_X  0x28	/* word */
+#define CIRRUS_MMIO_LINEARDRAW_END_Y  0x2a	/* word */
+#define CIRRUS_MMIO_LINEARDRAW_LINESTYLE_INC 0x2c	/* byte */
+#define CIRRUS_MMIO_LINEARDRAW_LINESTYLE_ROLLOVER 0x2d	/* byte */
+#define CIRRUS_MMIO_LINEARDRAW_LINESTYLE_MASK 0x2e	/* byte */
+#define CIRRUS_MMIO_LINEARDRAW_LINESTYLE_ACCUM 0x2f	/* byte */
+#define CIRRUS_MMIO_BRESENHAM_K1      0x30	/* word */
+#define CIRRUS_MMIO_BRESENHAM_K3      0x32	/* word */
+#define CIRRUS_MMIO_BRESENHAM_ERROR   0x34	/* word */
+#define CIRRUS_MMIO_BRESENHAM_DELTA_MAJOR 0x36	/* word */
+#define CIRRUS_MMIO_BRESENHAM_DIRECTION 0x38	/* byte */
+#define CIRRUS_MMIO_LINEDRAW_MODE     0x39	/* byte */
+#define CIRRUS_MMIO_BLTSTATUS         0x40	/* byte */
 
 #define CIRRUS_PNPMMIO_SIZE         0x1000
 
@@ -1054,7 +1054,7 @@ static void cirrus_bitblt_start(CirrusVGAState * s)
 		}
 	    }
 	}
-        // setup bitblt engine.
+        /* setup bitblt engine. */
         if (s->cirrus_blt_mode & CIRRUS_BLTMODE_MEMSYSSRC) {
             if (!cirrus_bitblt_cputovideo(s))
                 goto bitblt_ignore;
@@ -1248,56 +1248,56 @@ static void cirrus_update_bank_ptr(CirrusVGAState * s, unsigned bank_index)
 static int cirrus_vga_read_sr(CirrusVGAState * s)
 {
     switch (s->vga.sr_index) {
-    case 0x00:			// Standard VGA
-    case 0x01:			// Standard VGA
-    case 0x02:			// Standard VGA
-    case 0x03:			// Standard VGA
-    case 0x04:			// Standard VGA
+    case 0x00:			/* Standard VGA */
+    case 0x01:			/* Standard VGA */
+    case 0x02:			/* Standard VGA */
+    case 0x03:			/* Standard VGA */
+    case 0x04:			/* Standard VGA */
 	return s->vga.sr[s->vga.sr_index];
-    case 0x06:			// Unlock Cirrus extensions
+    case 0x06:			/* Unlock Cirrus extensions */
 	return s->vga.sr[s->vga.sr_index];
     case 0x10:
     case 0x30:
     case 0x50:
-    case 0x70:			// Graphics Cursor X
+    case 0x70:			/* Graphics Cursor X */
     case 0x90:
     case 0xb0:
     case 0xd0:
-    case 0xf0:			// Graphics Cursor X
+    case 0xf0:			/* Graphics Cursor X */
 	return s->vga.sr[0x10];
     case 0x11:
     case 0x31:
     case 0x51:
-    case 0x71:			// Graphics Cursor Y
+    case 0x71:			/* Graphics Cursor Y */
     case 0x91:
     case 0xb1:
     case 0xd1:
-    case 0xf1:			// Graphics Cursor Y
+    case 0xf1:			/* Graphics Cursor Y */
 	return s->vga.sr[0x11];
-    case 0x05:			// ???
-    case 0x07:			// Extended Sequencer Mode
-    case 0x08:			// EEPROM Control
-    case 0x09:			// Scratch Register 0
-    case 0x0a:			// Scratch Register 1
-    case 0x0b:			// VCLK 0
-    case 0x0c:			// VCLK 1
-    case 0x0d:			// VCLK 2
-    case 0x0e:			// VCLK 3
-    case 0x0f:			// DRAM Control
-    case 0x12:			// Graphics Cursor Attribute
-    case 0x13:			// Graphics Cursor Pattern Address
-    case 0x14:			// Scratch Register 2
-    case 0x15:			// Scratch Register 3
-    case 0x16:			// Performance Tuning Register
-    case 0x17:			// Configuration Readback and Extended Control
-    case 0x18:			// Signature Generator Control
-    case 0x19:			// Signal Generator Result
-    case 0x1a:			// Signal Generator Result
-    case 0x1b:			// VCLK 0 Denominator & Post
-    case 0x1c:			// VCLK 1 Denominator & Post
-    case 0x1d:			// VCLK 2 Denominator & Post
-    case 0x1e:			// VCLK 3 Denominator & Post
-    case 0x1f:			// BIOS Write Enable and MCLK select
+    case 0x05:			/* ??? */
+    case 0x07:			/* Extended Sequencer Mode */
+    case 0x08:			/* EEPROM Control */
+    case 0x09:			/* Scratch Register 0 */
+    case 0x0a:			/* Scratch Register 1 */
+    case 0x0b:			/* VCLK 0 */
+    case 0x0c:			/* VCLK 1 */
+    case 0x0d:			/* VCLK 2 */
+    case 0x0e:			/* VCLK 3 */
+    case 0x0f:			/* DRAM Control */
+    case 0x12:			/* Graphics Cursor Attribute */
+    case 0x13:			/* Graphics Cursor Pattern Address */
+    case 0x14:			/* Scratch Register 2 */
+    case 0x15:			/* Scratch Register 3 */
+    case 0x16:			/* Performance Tuning Register */
+    case 0x17:			/* Configuration Readback and Extended Control */
+    case 0x18:			/* Signature Generator Control */
+    case 0x19:			/* Signal Generator Result */
+    case 0x1a:			/* Signal Generator Result */
+    case 0x1b:			/* VCLK 0 Denominator & Post */
+    case 0x1c:			/* VCLK 1 Denominator & Post */
+    case 0x1d:			/* VCLK 2 Denominator & Post */
+    case 0x1e:			/* VCLK 3 Denominator & Post */
+    case 0x1f:			/* BIOS Write Enable and MCLK select */
 #ifdef DEBUG_CIRRUS
 	printf("cirrus: handled inport sr_index %02x\n", s->vga.sr_index);
 #endif
@@ -1312,16 +1312,16 @@ static int cirrus_vga_read_sr(CirrusVGAState * s)
 static void cirrus_vga_write_sr(CirrusVGAState * s, uint32_t val)
 {
     switch (s->vga.sr_index) {
-    case 0x00:			// Standard VGA
-    case 0x01:			// Standard VGA
-    case 0x02:			// Standard VGA
-    case 0x03:			// Standard VGA
-    case 0x04:			// Standard VGA
+    case 0x00:			/* Standard VGA */
+    case 0x01:			/* Standard VGA */
+    case 0x02:			/* Standard VGA */
+    case 0x03:			/* Standard VGA */
+    case 0x04:			/* Standard VGA */
 	s->vga.sr[s->vga.sr_index] = val & sr_mask[s->vga.sr_index];
 	if (s->vga.sr_index == 1)
             s->vga.update_retrace_info(&s->vga);
         break;
-    case 0x06:			// Unlock Cirrus extensions
+    case 0x06:			/* Unlock Cirrus extensions */
 	val &= 0x17;
 	if (val == 0x12) {
 	    s->vga.sr[s->vga.sr_index] = 0x12;
@@ -1332,55 +1332,55 @@ static void cirrus_vga_write_sr(CirrusVGAState * s, uint32_t val)
     case 0x10:
     case 0x30:
     case 0x50:
-    case 0x70:			// Graphics Cursor X
+    case 0x70:			/* Graphics Cursor X */
     case 0x90:
     case 0xb0:
     case 0xd0:
-    case 0xf0:			// Graphics Cursor X
+    case 0xf0:			/* Graphics Cursor X */
 	s->vga.sr[0x10] = val;
         s->vga.hw_cursor_x = (val << 3) | (s->vga.sr_index >> 5);
 	break;
     case 0x11:
     case 0x31:
     case 0x51:
-    case 0x71:			// Graphics Cursor Y
+    case 0x71:			/* Graphics Cursor Y */
     case 0x91:
     case 0xb1:
     case 0xd1:
-    case 0xf1:			// Graphics Cursor Y
+    case 0xf1:			/* Graphics Cursor Y */
 	s->vga.sr[0x11] = val;
         s->vga.hw_cursor_y = (val << 3) | (s->vga.sr_index >> 5);
 	break;
-    case 0x07:			// Extended Sequencer Mode
+    case 0x07:			/* Extended Sequencer Mode */
         cirrus_update_memory_access(s);
         /* fall through */
-    case 0x08:			// EEPROM Control
-    case 0x09:			// Scratch Register 0
-    case 0x0a:			// Scratch Register 1
-    case 0x0b:			// VCLK 0
-    case 0x0c:			// VCLK 1
-    case 0x0d:			// VCLK 2
-    case 0x0e:			// VCLK 3
-    case 0x0f:			// DRAM Control
-    case 0x13:			// Graphics Cursor Pattern Address
-    case 0x14:			// Scratch Register 2
-    case 0x15:			// Scratch Register 3
-    case 0x16:			// Performance Tuning Register
-    case 0x18:			// Signature Generator Control
-    case 0x19:			// Signature Generator Result
-    case 0x1a:			// Signature Generator Result
-    case 0x1b:			// VCLK 0 Denominator & Post
-    case 0x1c:			// VCLK 1 Denominator & Post
-    case 0x1d:			// VCLK 2 Denominator & Post
-    case 0x1e:			// VCLK 3 Denominator & Post
-    case 0x1f:			// BIOS Write Enable and MCLK select
+    case 0x08:			/* EEPROM Control */
+    case 0x09:			/* Scratch Register 0 */
+    case 0x0a:			/* Scratch Register 1 */
+    case 0x0b:			/* VCLK 0 */
+    case 0x0c:			/* VCLK 1 */
+    case 0x0d:			/* VCLK 2 */
+    case 0x0e:			/* VCLK 3 */
+    case 0x0f:			/* DRAM Control */
+    case 0x13:			/* Graphics Cursor Pattern Address */
+    case 0x14:			/* Scratch Register 2 */
+    case 0x15:			/* Scratch Register 3 */
+    case 0x16:			/* Performance Tuning Register */
+    case 0x18:			/* Signature Generator Control */
+    case 0x19:			/* Signature Generator Result */
+    case 0x1a:			/* Signature Generator Result */
+    case 0x1b:			/* VCLK 0 Denominator & Post */
+    case 0x1c:			/* VCLK 1 Denominator & Post */
+    case 0x1d:			/* VCLK 2 Denominator & Post */
+    case 0x1e:			/* VCLK 3 Denominator & Post */
+    case 0x1f:			/* BIOS Write Enable and MCLK select */
 	s->vga.sr[s->vga.sr_index] = val;
 #ifdef DEBUG_CIRRUS
 	printf("cirrus: handled outport sr_index %02x, sr_value %02x\n",
 	       s->vga.sr_index, val);
 #endif
 	break;
-    case 0x12:			// Graphics Cursor Attribute
+    case 0x12:			/* Graphics Cursor Attribute */
 	s->vga.sr[0x12] = val;
         s->vga.force_shadow = !!(val & CIRRUS_CURSOR_SHOW);
 #ifdef DEBUG_CIRRUS
@@ -1388,7 +1388,7 @@ static void cirrus_vga_write_sr(CirrusVGAState * s, uint32_t val)
                val, s->vga.force_shadow);
 #endif
         break;
-    case 0x17:			// Configuration Readback and Extended Control
+    case 0x17:			/* Configuration Readback and Extended Control */
 	s->vga.sr[s->vga.sr_index] = (s->vga.sr[s->vga.sr_index] & 0x38)
                                    | (val & 0xc7);
         cirrus_update_memory_access(s);
@@ -1475,18 +1475,18 @@ static void cirrus_vga_write_palette(CirrusVGAState * s, int reg_value)
 static int cirrus_vga_read_gr(CirrusVGAState * s, unsigned reg_index)
 {
     switch (reg_index) {
-    case 0x00: // Standard VGA, BGCOLOR 0x000000ff
+    case 0x00: /* Standard VGA, BGCOLOR 0x000000ff */
         return s->cirrus_shadow_gr0;
-    case 0x01: // Standard VGA, FGCOLOR 0x000000ff
+    case 0x01: /* Standard VGA, FGCOLOR 0x000000ff */
         return s->cirrus_shadow_gr1;
-    case 0x02:			// Standard VGA
-    case 0x03:			// Standard VGA
-    case 0x04:			// Standard VGA
-    case 0x06:			// Standard VGA
-    case 0x07:			// Standard VGA
-    case 0x08:			// Standard VGA
+    case 0x02:			/* Standard VGA */
+    case 0x03:			/* Standard VGA */
+    case 0x04:			/* Standard VGA */
+    case 0x06:			/* Standard VGA */
+    case 0x07:			/* Standard VGA */
+    case 0x08:			/* Standard VGA */
         return s->vga.gr[s->vga.gr_index];
-    case 0x05:			// Standard VGA, Cirrus extended mode
+    case 0x05:			/* Standard VGA, Cirrus extended mode */
     default:
 	break;
     }
@@ -1505,28 +1505,28 @@ cirrus_vga_write_gr(CirrusVGAState * s, unsigned reg_index, int reg_value)
 {
     trace_vga_cirrus_write_gr(reg_index, reg_value);
     switch (reg_index) {
-    case 0x00:			// Standard VGA, BGCOLOR 0x000000ff
+    case 0x00:			/* Standard VGA, BGCOLOR 0x000000ff */
 	s->vga.gr[reg_index] = reg_value & gr_mask[reg_index];
 	s->cirrus_shadow_gr0 = reg_value;
 	break;
-    case 0x01:			// Standard VGA, FGCOLOR 0x000000ff
+    case 0x01:			/* Standard VGA, FGCOLOR 0x000000ff */
 	s->vga.gr[reg_index] = reg_value & gr_mask[reg_index];
 	s->cirrus_shadow_gr1 = reg_value;
 	break;
-    case 0x02:			// Standard VGA
-    case 0x03:			// Standard VGA
-    case 0x04:			// Standard VGA
-    case 0x06:			// Standard VGA
-    case 0x07:			// Standard VGA
-    case 0x08:			// Standard VGA
+    case 0x02:			/* Standard VGA */
+    case 0x03:			/* Standard VGA */
+    case 0x04:			/* Standard VGA */
+    case 0x06:			/* Standard VGA */
+    case 0x07:			/* Standard VGA */
+    case 0x08:			/* Standard VGA */
 	s->vga.gr[reg_index] = reg_value & gr_mask[reg_index];
         break;
-    case 0x05:			// Standard VGA, Cirrus extended mode
+    case 0x05:			/* Standard VGA, Cirrus extended mode */
 	s->vga.gr[reg_index] = reg_value & 0x7f;
         cirrus_update_memory_access(s);
 	break;
-    case 0x09:			// bank offset #0
-    case 0x0A:			// bank offset #1
+    case 0x09:			/* bank offset #0 */
+    case 0x0A:			/* bank offset #1 */
 	s->vga.gr[reg_index] = reg_value;
 	cirrus_update_bank_ptr(s, 0);
 	cirrus_update_bank_ptr(s, 1);
@@ -1538,47 +1538,47 @@ cirrus_vga_write_gr(CirrusVGAState * s, unsigned reg_index, int reg_value)
 	cirrus_update_bank_ptr(s, 1);
         cirrus_update_memory_access(s);
 	break;
-    case 0x10:			// BGCOLOR 0x0000ff00
-    case 0x11:			// FGCOLOR 0x0000ff00
-    case 0x12:			// BGCOLOR 0x00ff0000
-    case 0x13:			// FGCOLOR 0x00ff0000
-    case 0x14:			// BGCOLOR 0xff000000
-    case 0x15:			// FGCOLOR 0xff000000
-    case 0x20:			// BLT WIDTH 0x0000ff
-    case 0x22:			// BLT HEIGHT 0x0000ff
-    case 0x24:			// BLT DEST PITCH 0x0000ff
-    case 0x26:			// BLT SRC PITCH 0x0000ff
-    case 0x28:			// BLT DEST ADDR 0x0000ff
-    case 0x29:			// BLT DEST ADDR 0x00ff00
-    case 0x2c:			// BLT SRC ADDR 0x0000ff
-    case 0x2d:			// BLT SRC ADDR 0x00ff00
-    case 0x2f:                  // BLT WRITEMASK
-    case 0x30:			// BLT MODE
-    case 0x32:			// RASTER OP
-    case 0x33:			// BLT MODEEXT
-    case 0x34:			// BLT TRANSPARENT COLOR 0x00ff
-    case 0x35:			// BLT TRANSPARENT COLOR 0xff00
-    case 0x38:			// BLT TRANSPARENT COLOR MASK 0x00ff
-    case 0x39:			// BLT TRANSPARENT COLOR MASK 0xff00
+    case 0x10:			/* BGCOLOR 0x0000ff00 */
+    case 0x11:			/* FGCOLOR 0x0000ff00 */
+    case 0x12:			/* BGCOLOR 0x00ff0000 */
+    case 0x13:			/* FGCOLOR 0x00ff0000 */
+    case 0x14:			/* BGCOLOR 0xff000000 */
+    case 0x15:			/* FGCOLOR 0xff000000 */
+    case 0x20:			/* BLT WIDTH 0x0000ff */
+    case 0x22:			/* BLT HEIGHT 0x0000ff */
+    case 0x24:			/* BLT DEST PITCH 0x0000ff */
+    case 0x26:			/* BLT SRC PITCH 0x0000ff */
+    case 0x28:			/* BLT DEST ADDR 0x0000ff */
+    case 0x29:			/* BLT DEST ADDR 0x00ff00 */
+    case 0x2c:			/* BLT SRC ADDR 0x0000ff */
+    case 0x2d:			/* BLT SRC ADDR 0x00ff00 */
+    case 0x2f:                  /* BLT WRITEMASK */
+    case 0x30:			/* BLT MODE */
+    case 0x32:			/* RASTER OP */
+    case 0x33:			/* BLT MODEEXT */
+    case 0x34:			/* BLT TRANSPARENT COLOR 0x00ff */
+    case 0x35:			/* BLT TRANSPARENT COLOR 0xff00 */
+    case 0x38:			/* BLT TRANSPARENT COLOR MASK 0x00ff */
+    case 0x39:			/* BLT TRANSPARENT COLOR MASK 0xff00 */
 	s->vga.gr[reg_index] = reg_value;
 	break;
-    case 0x21:			// BLT WIDTH 0x001f00
-    case 0x23:			// BLT HEIGHT 0x001f00
-    case 0x25:			// BLT DEST PITCH 0x001f00
-    case 0x27:			// BLT SRC PITCH 0x001f00
+    case 0x21:			/* BLT WIDTH 0x001f00 */
+    case 0x23:			/* BLT HEIGHT 0x001f00 */
+    case 0x25:			/* BLT DEST PITCH 0x001f00 */
+    case 0x27:			/* BLT SRC PITCH 0x001f00 */
 	s->vga.gr[reg_index] = reg_value & 0x1f;
 	break;
-    case 0x2a:			// BLT DEST ADDR 0x3f0000
+    case 0x2a:			/* BLT DEST ADDR 0x3f0000 */
 	s->vga.gr[reg_index] = reg_value & 0x3f;
         /* if auto start mode, starts bit blt now */
         if (s->vga.gr[0x31] & CIRRUS_BLT_AUTOSTART) {
             cirrus_bitblt_start(s);
         }
 	break;
-    case 0x2e:			// BLT SRC ADDR 0x3f0000
+    case 0x2e:			/* BLT SRC ADDR 0x3f0000 */
 	s->vga.gr[reg_index] = reg_value & 0x3f;
 	break;
-    case 0x31:			// BLT STATUS/START
+    case 0x31:			/* BLT STATUS/START */
 	cirrus_write_bitblt(s, reg_value);
 	break;
     default:
@@ -1598,44 +1598,44 @@ cirrus_vga_write_gr(CirrusVGAState * s, unsigned reg_index, int reg_value)
 static int cirrus_vga_read_cr(CirrusVGAState * s, unsigned reg_index)
 {
     switch (reg_index) {
-    case 0x00:			// Standard VGA
-    case 0x01:			// Standard VGA
-    case 0x02:			// Standard VGA
-    case 0x03:			// Standard VGA
-    case 0x04:			// Standard VGA
-    case 0x05:			// Standard VGA
-    case 0x06:			// Standard VGA
-    case 0x07:			// Standard VGA
-    case 0x08:			// Standard VGA
-    case 0x09:			// Standard VGA
-    case 0x0a:			// Standard VGA
-    case 0x0b:			// Standard VGA
-    case 0x0c:			// Standard VGA
-    case 0x0d:			// Standard VGA
-    case 0x0e:			// Standard VGA
-    case 0x0f:			// Standard VGA
-    case 0x10:			// Standard VGA
-    case 0x11:			// Standard VGA
-    case 0x12:			// Standard VGA
-    case 0x13:			// Standard VGA
-    case 0x14:			// Standard VGA
-    case 0x15:			// Standard VGA
-    case 0x16:			// Standard VGA
-    case 0x17:			// Standard VGA
-    case 0x18:			// Standard VGA
+    case 0x00:			/* Standard VGA */
+    case 0x01:			/* Standard VGA */
+    case 0x02:			/* Standard VGA */
+    case 0x03:			/* Standard VGA */
+    case 0x04:			/* Standard VGA */
+    case 0x05:			/* Standard VGA */
+    case 0x06:			/* Standard VGA */
+    case 0x07:			/* Standard VGA */
+    case 0x08:			/* Standard VGA */
+    case 0x09:			/* Standard VGA */
+    case 0x0a:			/* Standard VGA */
+    case 0x0b:			/* Standard VGA */
+    case 0x0c:			/* Standard VGA */
+    case 0x0d:			/* Standard VGA */
+    case 0x0e:			/* Standard VGA */
+    case 0x0f:			/* Standard VGA */
+    case 0x10:			/* Standard VGA */
+    case 0x11:			/* Standard VGA */
+    case 0x12:			/* Standard VGA */
+    case 0x13:			/* Standard VGA */
+    case 0x14:			/* Standard VGA */
+    case 0x15:			/* Standard VGA */
+    case 0x16:			/* Standard VGA */
+    case 0x17:			/* Standard VGA */
+    case 0x18:			/* Standard VGA */
 	return s->vga.cr[s->vga.cr_index];
-    case 0x24:			// Attribute Controller Toggle Readback (R)
+    case 0x24:			/* Attribute Controller Toggle Readback (R) */
         return (s->vga.ar_flip_flop << 7);
-    case 0x19:			// Interlace End
-    case 0x1a:			// Miscellaneous Control
-    case 0x1b:			// Extended Display Control
-    case 0x1c:			// Sync Adjust and Genlock
-    case 0x1d:			// Overlay Extended Control
-    case 0x22:			// Graphics Data Latches Readback (R)
-    case 0x25:			// Part Status
-    case 0x27:			// Part ID (R)
+    case 0x19:			/* Interlace End */
+    case 0x1a:			/* Miscellaneous Control */
+    case 0x1b:			/* Extended Display Control */
+    case 0x1c:			/* Sync Adjust and Genlock */
+    case 0x1d:			/* Overlay Extended Control */
+    case 0x22:			/* Graphics Data Latches Readback (R) */
+    case 0x25:			/* Part Status */
+    case 0x27:			/* Part ID (R) */
 	return s->vga.cr[s->vga.cr_index];
-    case 0x26:			// Attribute Controller Index Readback (R)
+    case 0x26:			/* Attribute Controller Index Readback (R) */
 	return s->vga.ar_index & 0x3f;
 	break;
     default:
@@ -1648,31 +1648,31 @@ static int cirrus_vga_read_cr(CirrusVGAState * s, unsigned reg_index)
 static void cirrus_vga_write_cr(CirrusVGAState * s, int reg_value)
 {
     switch (s->vga.cr_index) {
-    case 0x00:			// Standard VGA
-    case 0x01:			// Standard VGA
-    case 0x02:			// Standard VGA
-    case 0x03:			// Standard VGA
-    case 0x04:			// Standard VGA
-    case 0x05:			// Standard VGA
-    case 0x06:			// Standard VGA
-    case 0x07:			// Standard VGA
-    case 0x08:			// Standard VGA
-    case 0x09:			// Standard VGA
-    case 0x0a:			// Standard VGA
-    case 0x0b:			// Standard VGA
-    case 0x0c:			// Standard VGA
-    case 0x0d:			// Standard VGA
-    case 0x0e:			// Standard VGA
-    case 0x0f:			// Standard VGA
-    case 0x10:			// Standard VGA
-    case 0x11:			// Standard VGA
-    case 0x12:			// Standard VGA
-    case 0x13:			// Standard VGA
-    case 0x14:			// Standard VGA
-    case 0x15:			// Standard VGA
-    case 0x16:			// Standard VGA
-    case 0x17:			// Standard VGA
-    case 0x18:			// Standard VGA
+    case 0x00:			/* Standard VGA */
+    case 0x01:			/* Standard VGA */
+    case 0x02:			/* Standard VGA */
+    case 0x03:			/* Standard VGA */
+    case 0x04:			/* Standard VGA */
+    case 0x05:			/* Standard VGA */
+    case 0x06:			/* Standard VGA */
+    case 0x07:			/* Standard VGA */
+    case 0x08:			/* Standard VGA */
+    case 0x09:			/* Standard VGA */
+    case 0x0a:			/* Standard VGA */
+    case 0x0b:			/* Standard VGA */
+    case 0x0c:			/* Standard VGA */
+    case 0x0d:			/* Standard VGA */
+    case 0x0e:			/* Standard VGA */
+    case 0x0f:			/* Standard VGA */
+    case 0x10:			/* Standard VGA */
+    case 0x11:			/* Standard VGA */
+    case 0x12:			/* Standard VGA */
+    case 0x13:			/* Standard VGA */
+    case 0x14:			/* Standard VGA */
+    case 0x15:			/* Standard VGA */
+    case 0x16:			/* Standard VGA */
+    case 0x17:			/* Standard VGA */
+    case 0x18:			/* Standard VGA */
 	/* handle CR0-7 protection */
 	if ((s->vga.cr[0x11] & 0x80) && s->vga.cr_index <= 7) {
 	    /* can always write bit 4 of CR7 */
@@ -1693,23 +1693,23 @@ static void cirrus_vga_write_cr(CirrusVGAState * s, int reg_value)
 	    break;
 	}
         break;
-    case 0x19:			// Interlace End
-    case 0x1a:			// Miscellaneous Control
-    case 0x1b:			// Extended Display Control
-    case 0x1c:			// Sync Adjust and Genlock
-    case 0x1d:			// Overlay Extended Control
+    case 0x19:			/* Interlace End */
+    case 0x1a:			/* Miscellaneous Control */
+    case 0x1b:			/* Extended Display Control */
+    case 0x1c:			/* Sync Adjust and Genlock */
+    case 0x1d:			/* Overlay Extended Control */
 	s->vga.cr[s->vga.cr_index] = reg_value;
 #ifdef DEBUG_CIRRUS
 	printf("cirrus: handled outport cr_index %02x, cr_value %02x\n",
 	       s->vga.cr_index, reg_value);
 #endif
 	break;
-    case 0x22:			// Graphics Data Latches Readback (R)
-    case 0x24:			// Attribute Controller Toggle Readback (R)
-    case 0x26:			// Attribute Controller Index Readback (R)
-    case 0x27:			// Part ID (R)
+    case 0x22:			/* Graphics Data Latches Readback (R) */
+    case 0x24:			/* Attribute Controller Toggle Readback (R) */
+    case 0x26:			/* Attribute Controller Index Readback (R) */
+    case 0x27:			/* Part ID (R) */
 	break;
-    case 0x25:			// Part Status
+    case 0x25:			/* Part Status */
     default:
         qemu_log_mask(LOG_GUEST_ERROR,
                       "cirrus: outport cr_index 0x%02x, cr_value 0x%02x\n",
@@ -2812,13 +2812,13 @@ static void cirrus_reset(void *opaque)
     s->vga.sr[0x06] = 0x0f;
     if (s->device_id == CIRRUS_ID_CLGD5446) {
         /* 4MB 64 bit memory config, always PCI */
-        s->vga.sr[0x1F] = 0x2d;		// MemClock
-        s->vga.gr[0x18] = 0x0f;             // fastest memory configuration
+        s->vga.sr[0x1F] = 0x2d;		/* MemClock */
+        s->vga.gr[0x18] = 0x0f;             /* fastest memory configuration */
         s->vga.sr[0x0f] = 0x98;
         s->vga.sr[0x17] = 0x20;
         s->vga.sr[0x15] = 0x04; /* memory size, 3=2MB, 4=4MB */
     } else {
-        s->vga.sr[0x1F] = 0x22;		// MemClock
+        s->vga.sr[0x1F] = 0x22;		/* MemClock */
         s->vga.sr[0x0F] = CIRRUS_MEMSIZE_2M;
         s->vga.sr[0x17] = s->bustype;
         s->vga.sr[0x15] = 0x03; /* memory size, 3=2MB, 4=4MB */

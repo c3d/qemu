@@ -34,10 +34,10 @@
 #include "trace.h"
 
 /* debug PC keyboard */
-//#define DEBUG_KBD
+/*#define DEBUG_KBD */
 
 /* debug PC keyboard : only mouse */
-//#define DEBUG_MOUSE
+/*#define DEBUG_MOUSE */
 
 /* Keyboard Commands */
 #define KBD_CMD_SET_LEDS	0xED	/* Set keyboard leds */

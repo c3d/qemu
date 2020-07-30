@@ -70,7 +70,7 @@
 #include "qemu/atomic.h"
 #include "qemu/rcu.h"
 
-//#define QHT_DEBUG
+/*#define QHT_DEBUG */
 
 /*
  * We want to avoid false sharing of cache lines. Most systems have 64-byte

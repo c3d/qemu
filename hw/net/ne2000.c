@@ -32,7 +32,7 @@
 #include "trace.h"
 
 /* debug NE2000 card */
-//#define DEBUG_NE2000
+/*#define DEBUG_NE2000 */
 
 #define MAX_ETH_FRAME_SIZE 1514
 

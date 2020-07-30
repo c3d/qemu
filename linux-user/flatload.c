@@ -39,7 +39,7 @@
 #include "flat.h"
 #include "target_flat.h"
 
-//#define DEBUG
+/*#define DEBUG */
 
 #ifdef DEBUG
 #define	DBG_FLT(...)	printf(__VA_ARGS__)

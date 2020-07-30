@@ -2143,7 +2143,7 @@ uint32_t ide_ioport_read(void *opaque, uint32_t addr)
 
     reg_num = addr & 7;
     /* FIXME: HOB readback uses bit 7, but it's always set right now */
-    //hob = s->select & (1 << 7);
+    /*hob = s->select & (1 << 7); */
     hob = 0;
     switch (reg_num) {
     case ATA_IOPORT_RR_DATA:

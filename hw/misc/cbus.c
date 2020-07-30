@@ -26,7 +26,7 @@
 #include "hw/misc/cbus.h"
 #include "sysemu/runstate.h"
 
-//#define DEBUG
+/*#define DEBUG */
 
 typedef struct {
     void *opaque;

@@ -199,7 +199,7 @@ static void sx1_init(MachineState *machine, const int version)
     arm_load_kernel(mpu->cpu, machine, &sx1_binfo);
 
     /* TODO: fix next line */
-    //~ qemu_console_resize(ds, 640, 480);
+    /*~ qemu_console_resize(ds, 640, 480); */
 }
 
 static void sx1_init_v1(MachineState *machine)

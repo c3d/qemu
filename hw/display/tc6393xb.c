@@ -141,14 +141,14 @@ struct TC6393xbState {
 
 static void tc6393xb_gpio_set(void *opaque, int line, int level)
 {
-//    TC6393xbState *s = opaque;
+/*    TC6393xbState *s = opaque; */
 
     if (line > TC6393XB_GPIOS) {
         printf("%s: No GPIO pin %i\n", __func__, line);
         return;
     }
 
-    // FIXME: how does the chip reflect the GPIO input level change?
+    /* FIXME: how does the chip reflect the GPIO input level change? */
 }
 
 static void tc6393xb_gpio_handler_update(TC6393xbState *s)
@@ -367,8 +367,8 @@ static uint32_t tc6393xb_nand_readb(TC6393xbState *s, hwaddr addr) {
     return 0;
 }
 static void tc6393xb_nand_writeb(TC6393xbState *s, hwaddr addr, uint32_t value) {
-//    fprintf(stderr, "tc6393xb_nand: write at %08x: %02x\n",
-//					(uint32_t) addr, value & 0xff);
+/*    fprintf(stderr, "tc6393xb_nand: write at %08x: %02x\n", */
+/*					(uint32_t) addr, value & 0xff); */
     switch (addr) {
         case NAND_DATA + 0:
         case NAND_DATA + 1:
@@ -385,13 +385,13 @@ static void tc6393xb_nand_writeb(TC6393xbState *s, hwaddr addr, uint32_t value) 
                     value & NAND_MODE_ALE,
                     !(value & NAND_MODE_CE),
                     value & NAND_MODE_WP,
-                    0); // FIXME: gnd
+                    0); /*  FIXME: gnd */
             switch (value & NAND_MODE_ECC_MASK) {
                 case NAND_MODE_ECC_RST:
                     ecc_reset(&s->ecc);
                     break;
                 case NAND_MODE_ECC_READ:
-                    // FIXME
+                    /* FIXME */
                     break;
                 case NAND_MODE_ECC_EN:
                     ecc_reset(&s->ecc);
@@ -508,13 +508,13 @@ static uint64_t tc6393xb_readb(void *opaque, hwaddr addr,
     };
 
     if ((addr &~0xff) == s->nand_phys && s->nand_enable) {
-//        return tc6393xb_nand_readb(s, addr & 0xff);
+/*        return tc6393xb_nand_readb(s, addr & 0xff); */
         uint8_t d = tc6393xb_nand_readb(s, addr & 0xff);
-//        fprintf(stderr, "tc6393xb_nand: read at %08x: %02hhx\n", (uint32_t) addr, d);
+/*        fprintf(stderr, "tc6393xb_nand: read at %08x: %02hhx\n", (uint32_t) addr, d); */
         return d;
     }
 
-//    fprintf(stderr, "tc6393xb: unhandled read at %08x\n", (uint32_t) addr);
+/*    fprintf(stderr, "tc6393xb: unhandled read at %08x\n", (uint32_t) addr); */
     return 0;
 }
 

@@ -24,7 +24,7 @@
 
 #define SPARC64_STACK_BIAS 2047
 
-//#define DEBUG_WIN
+/*#define DEBUG_WIN */
 
 /* WARNING: dealing with register windows _is_ complicated. More info
    can be found at http://www.sics.se/~psm/sparcstack.html */

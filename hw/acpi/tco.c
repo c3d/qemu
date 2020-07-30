@@ -15,7 +15,7 @@
 #include "hw/acpi/tco.h"
 #include "trace.h"
 
-//#define DEBUG
+/*#define DEBUG */
 
 #ifdef DEBUG
 #define TCO_DEBUG(fmt, ...)                                     \

@@ -20,7 +20,7 @@
 #include "chardev/char-serial.h"
 #include "chardev/char-fe.h"
 
-//#define DEBUG_Serial
+/*#define DEBUG_Serial */
 
 #ifdef DEBUG_Serial
 #define DPRINTF(fmt, ...) \
@@ -80,21 +80,21 @@ do { printf("usb-serial: " fmt , ## __VA_ARGS__); } while (0)
 
 /* GET_MDM_ST */
 /* TODO: should be sent every 40ms */
-#define FTDI_CTS  (1<<4)        // CTS line status
-#define FTDI_DSR  (1<<5)        // DSR line status
-#define FTDI_RI   (1<<6)        // RI line status
-#define FTDI_RLSD (1<<7)        // Receive Line Signal Detect
+#define FTDI_CTS  (1<<4)        /*  CTS line status */
+#define FTDI_DSR  (1<<5)        /*  DSR line status */
+#define FTDI_RI   (1<<6)        /*  RI line status */
+#define FTDI_RLSD (1<<7)        /*  Receive Line Signal Detect */
 
 /* Status */
 
-#define FTDI_DR   (1<<0)        // Data Ready
-#define FTDI_OE   (1<<1)        // Overrun Err
-#define FTDI_PE   (1<<2)        // Parity Err
-#define FTDI_FE   (1<<3)        // Framing Err
-#define FTDI_BI   (1<<4)        // Break Interrupt
-#define FTDI_THRE (1<<5)        // Transmitter Holding Register
-#define FTDI_TEMT (1<<6)        // Transmitter Empty
-#define FTDI_FIFO (1<<7)        // Error in FIFO
+#define FTDI_DR   (1<<0)        /*  Data Ready */
+#define FTDI_OE   (1<<1)        /*  Overrun Err */
+#define FTDI_PE   (1<<2)        /*  Parity Err */
+#define FTDI_FE   (1<<3)        /*  Framing Err */
+#define FTDI_BI   (1<<4)        /*  Break Interrupt */
+#define FTDI_THRE (1<<5)        /*  Transmitter Holding Register */
+#define FTDI_TEMT (1<<6)        /*  Transmitter Empty */
+#define FTDI_FIFO (1<<7)        /*  Error in FIFO */
 
 typedef struct {
     USBDevice dev;

@@ -48,7 +48,7 @@ typedef struct InterfaceInfo InterfaceInfo;
  * #define TYPE_MY_DEVICE "my-device"
  *
  * // No new virtual functions: we can reuse the typedef for the
- * // superclass.
+ *   //  superclass.
  * typedef DeviceClass MyDeviceClass;
  * typedef struct MyDevice
  * {
@@ -181,7 +181,7 @@ typedef struct InterfaceInfo InterfaceInfo;
  *     .name = TYPE_MY_DEVICE,
  *     .parent = TYPE_DEVICE,
  *     .instance_size = sizeof(MyDevice),
- *     .abstract = true, // or set a default in my_device_class_init
+ *      .abstract = true,  //  or set a default in my_device_class_init
  *     .class_size = sizeof(MyDeviceClass),
  * };
  *
@@ -247,7 +247,7 @@ typedef struct InterfaceInfo InterfaceInfo;
  *
  * static void my_do_something(MyState *obj)
  * {
- *     // do something
+ *       //  do something
  * }
  *
  * static void my_class_init(ObjectClass *oc, void *data)
@@ -275,9 +275,9 @@ typedef struct InterfaceInfo InterfaceInfo;
  * {
  *     DerivedClass *dc = DERIVED_GET_CLASS(obj);
  *
- *     // do something here
+ *       //  do something here
  *     dc->parent_do_something(obj);
- *     // do something else here
+ *       //  do something else here
  * }
  *
  * static void derived_class_init(ObjectClass *oc, void *data)

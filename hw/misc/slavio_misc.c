@@ -103,7 +103,7 @@ static void slavio_misc_reset(DeviceState *d)
 {
     MiscState *s = SLAVIO_MISC(d);
 
-    // Diagnostic and system control registers not cleared in reset
+    /* Diagnostic and system control registers not cleared in reset */
     s->config = s->aux1 = s->aux2 = s->mctrl = 0;
 }
 
@@ -218,7 +218,7 @@ static void slavio_aux1_mem_writeb(void *opaque, hwaddr addr,
 
     trace_slavio_aux1_mem_writeb(val & 0xff);
     if (val & AUX1_TC) {
-        // Send a pulse to floppy terminal count line
+        /* Send a pulse to floppy terminal count line */
         if (s->fdc_tc) {
             qemu_irq_raise(s->fdc_tc);
             qemu_irq_lower(s->fdc_tc);
@@ -257,7 +257,7 @@ static void slavio_aux2_mem_writeb(void *opaque, hwaddr addr,
     val &= AUX2_PWRINTCLR | AUX2_PWROFF;
     trace_slavio_aux2_mem_writeb(val & 0xff);
     val |= s->aux2 & AUX2_PWRFAIL;
-    if (val & AUX2_PWRINTCLR) // Clear Power Fail int
+    if (val & AUX2_PWRINTCLR) /*  Clear Power Fail int */
         val &= AUX2_PWROFF;
     s->aux2 = val;
     if (val & AUX2_PWROFF)

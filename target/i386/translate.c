@@ -69,7 +69,7 @@
     case (2 << 6) | (OP << 3) | 0 ... (2 << 6) | (OP << 3) | 7: \
     case (3 << 6) | (OP << 3) | 0 ... (3 << 6) | (OP << 3) | 7
 
-//#define MACRO_TEST   1
+/*#define MACRO_TEST   1 */
 
 /* global register indexes */
 static TCGv cpu_cc_dst, cpu_cc_src, cpu_cc_src2;

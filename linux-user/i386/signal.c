@@ -509,7 +509,7 @@ restore_sigcontext(CPUX86State *env, struct target_sigcontext *sc)
 
     tmpflags = tswapl(sc->eflags);
     env->eflags = (env->eflags & ~0x40DD5) | (tmpflags & 0x40DD5);
-    //          regs->orig_eax = -1;            /* disable syscall checks */
+    /*          regs->orig_eax = -1;            /* disable syscall checks */ */
 
     fpstate_addr = tswapl(sc->fpstate);
     if (fpstate_addr != 0) {

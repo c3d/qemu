@@ -42,7 +42,7 @@ struct target_pt_regs {
 #define TARGET_GDT_ENTRY_TLS_MIN 12
 #define TARGET_GDT_ENTRY_TLS_MAX 14
 
-#if 0 // Redefine this
+#if 0 /*  Redefine this */
 struct target_modify_ldt_ldt_s {
 	unsigned int  entry_number;
         abi_ulong     base_addr;

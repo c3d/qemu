@@ -1329,7 +1329,7 @@ static int coroutine_fn bdrv_co_do_copy_on_readv(BdrvChild *child,
      * the copy-on-read code doesn't have its own BdrvChild, however, for which
      * it could request permissions. Therefore we have to bypass the permission
      * system for the moment. */
-    // assert(child->perm & (BLK_PERM_WRITE_UNCHANGED | BLK_PERM_WRITE));
+    /* assert(child->perm & (BLK_PERM_WRITE_UNCHANGED | BLK_PERM_WRITE)); */
 
     /* Cover entire cluster so no additional backing file I/O is required when
      * allocating cluster in the image file.  Note that this value may exceed

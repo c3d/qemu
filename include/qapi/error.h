@@ -187,7 +187,7 @@
  * Do *not* "optimize" this to
  *     Error *err = NULL;
  *     foo(arg, &err);
- *     bar(arg, &err); // WRONG!
+ *      bar(arg, &err);  // WRONG!
  *     if (err) {
  *         handle the error...
  *     }
@@ -199,7 +199,7 @@
  *         error_setg(&err, ...);
  *     }
  *     if (cond2) {
- *         error_setg(&err, ...); // WRONG!
+ *          error_setg(&err, ...);  // WRONG!
  *     }
  * because this may pass a non-null err to error_setg().
  *

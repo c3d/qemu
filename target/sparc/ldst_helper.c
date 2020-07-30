@@ -25,12 +25,12 @@
 #include "exec/cpu_ldst.h"
 #include "asi.h"
 
-//#define DEBUG_MMU
-//#define DEBUG_MXCC
-//#define DEBUG_UNALIGNED
-//#define DEBUG_UNASSIGNED
-//#define DEBUG_ASI
-//#define DEBUG_CACHE_CONTROL
+/*#define DEBUG_MMU */
+/*#define DEBUG_MXCC */
+/*#define DEBUG_UNALIGNED */
+/*#define DEBUG_UNASSIGNED */
+/*#define DEBUG_ASI */
+/*#define DEBUG_CACHE_CONTROL */
 
 #ifdef DEBUG_MMU
 #define DPRINTF_MMU(fmt, ...)                                   \

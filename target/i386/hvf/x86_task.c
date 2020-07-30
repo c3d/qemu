@@ -1,11 +1,13 @@
-// This software is licensed under the terms of the GNU General Public
-// License version 2, as published by the Free Software Foundation, and
-// may be copied, distributed, and modified under those terms.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
+/*
+ * This software is licensed under the terms of the GNU General Public
+ * License version 2, as published by the Free Software Foundation, and
+ * may be copied, distributed, and modified under those terms.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
 #include "qemu/osdep.h"
 #include "panic.h"
 #include "qemu-common.h"
@@ -31,7 +33,7 @@
 #include "sysemu/accel.h"
 #include "target/i386/cpu.h"
 
-// TODO: taskswitch handling
+/* TODO: taskswitch handling */
 static void save_state_to_tss32(CPUState *cpu, struct x86_tss_segment32 *tss)
 {
     X86CPU *x86_cpu = X86_CPU(cpu);
@@ -144,7 +146,7 @@ void vmx_handle_task_switch(CPUState *cpu, x68_segment_selector tss_sel, int rea
         dpl = task_gate_desc.dpl;
         x68_segment_selector cs = vmx_read_segment_selector(cpu, R_CS);
         if (tss_sel.rpl > dpl || cs.rpl > dpl)
-            ;//DPRINTF("emulate_gp");
+            ;/* DPRINTF("emulate_gp"); */
     }
 
     desc_limit = x86_segment_limit(&next_tss_desc);
@@ -171,7 +173,7 @@ void vmx_handle_task_switch(CPUState *cpu, x68_segment_selector tss_sel, int rea
     if (next_tss_desc.type & 8)
         ret = task_switch_32(cpu, tss_sel, old_tss_sel, old_tss_base, &next_tss_desc);
     else
-        //ret = task_switch_16(cpu, tss_sel, old_tss_sel, old_tss_base, &next_tss_desc);
+        /*ret = task_switch_16(cpu, tss_sel, old_tss_sel, old_tss_base, &next_tss_desc); */
         VM_PANIC("task_switch_16");
 
     macvm_set_cr0(cpu->hvf_fd, rvmcs(cpu->hvf_fd, VMCS_GUEST_CR0) | CR0_TS);

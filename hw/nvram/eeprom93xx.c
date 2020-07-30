@@ -41,7 +41,7 @@
 #include "migration/vmstate.h"
 
 /* Debug EEPROM emulation. */
-//~ #define DEBUG_EEPROM
+/*~ #define DEBUG_EEPROM */
 
 #ifdef DEBUG_EEPROM
 #define logout(fmt, ...) fprintf(stderr, "EEPROM\t%-24s" fmt, __func__, ## __VA_ARGS__)
@@ -204,7 +204,7 @@ void eeprom93xx_write(eeprom_t *eeprom, int eecs, int eesk, int eedi)
             } else {
                 logout("wrong 1st start bit (is 1, should be 0)\n");
                 tick = 2;
-                //~ assert(!"wrong start bit");
+                /*~ assert(!"wrong start bit"); */
             }
         } else if (tick == 1) {
             /* Wait for 2nd start bit. */

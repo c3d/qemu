@@ -198,37 +198,37 @@ unsigned int SingleCPDO(const unsigned int opcode)
 #if 0
 float32 float32_exp(float32 Fm)
 {
-//series
+/*series */
 }
 
 float32 float32_ln(float32 Fm)
 {
-//series
+/*series */
 }
 
 float32 float32_sin(float32 rFm)
 {
-//series
+/*series */
 }
 
 float32 float32_cos(float32 rFm)
 {
-//series
+/*series */
 }
 
 float32 float32_arcsin(float32 rFm)
 {
-//series
+/*series */
 }
 
 float32 float32_arctan(float32 rFm)
 {
-  //series
+  /*series */
 }
 
 float32 float32_arccos(float32 rFm)
 {
-   //return float32_sub(halfPi,float32_arcsin(rFm));
+   /*return float32_sub(halfPi,float32_arcsin(rFm)); */
 }
 
 float32 float32_log(float32 rFm)

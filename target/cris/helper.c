@@ -27,7 +27,7 @@
 #include "exec/helper-proto.h"
 
 
-//#define CRIS_HELPER_DEBUG
+/*#define CRIS_HELPER_DEBUG */
 
 
 #ifdef CRIS_HELPER_DEBUG

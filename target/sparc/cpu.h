@@ -194,8 +194,8 @@ enum {
 #define FSR_FTT2   (1ULL << 16)
 #define FSR_FTT1   (1ULL << 15)
 #define FSR_FTT0   (1ULL << 14)
-//gcc warns about constant overflow for ~FSR_FTT_MASK
-//#define FSR_FTT_MASK (FSR_FTT2 | FSR_FTT1 | FSR_FTT0)
+/*gcc warns about constant overflow for ~FSR_FTT_MASK */
+/*#define FSR_FTT_MASK (FSR_FTT2 | FSR_FTT1 | FSR_FTT0) */
 #ifdef TARGET_SPARC64
 #define FSR_FTT_NMASK      0xfffffffffffe3fffULL
 #define FSR_FTT_CEXC_NMASK 0xfffffffffffe3fe0ULL
@@ -299,10 +299,10 @@ struct sparc_def_t {
                               CPU_FEATURE_VIS2 | CPU_FEATURE_FSMULD | \
                               CPU_FEATURE_CASA)
 enum {
-    mmu_us_12, // Ultrasparc < III (64 entry TLB)
-    mmu_us_3,  // Ultrasparc III (512 entry TLB)
-    mmu_us_4,  // Ultrasparc IV (several TLBs, 32 and 256MB pages)
-    mmu_sun4v, // T1, T2
+    mmu_us_12, /* Ultrasparc < III (64 entry TLB) */
+    mmu_us_3,  /* Ultrasparc III (512 entry TLB) */
+    mmu_us_4,  /* Ultrasparc IV (several TLBs, 32 and 256MB pages) */
+    mmu_sun4v, /* T1, T2 */
 };
 #endif
 
@@ -525,11 +525,11 @@ struct CPUSPARCState {
 #define TICK_NPT_MASK        0x8000000000000000ULL
 #define TICK_INT_DIS         0x8000000000000000ULL
     uint64_t gsr;
-    uint32_t gl; // UA2005
+    uint32_t gl; /* UA2005 */
     /* UA 2005 hyperprivileged registers */
     uint64_t hpstate, htstate[MAXTL_MAX], hintp, htba, hver, hstick_cmpr, ssr;
     uint64_t scratch[8];
-    CPUTimer *hstick; // UA 2005
+    CPUTimer *hstick; /* UA 2005 */
     /* Interrupt vector registers */
     uint64_t ivec_status;
     uint64_t ivec_data[3];

@@ -73,7 +73,7 @@ static uint64_t cs_mem_read(void *opaque, hwaddr addr,
     switch (saddr) {
     case 1:
         switch (CS_RAP(s)) {
-        case 3: // Write only
+        case 3: /* Write only */
             ret = 0;
             break;
         default:
@@ -103,11 +103,11 @@ static void cs_mem_write(void *opaque, hwaddr addr,
         trace_cs4231_mem_writel_dreg(CS_RAP(s), s->dregs[CS_RAP(s)], val);
         switch(CS_RAP(s)) {
         case 11:
-        case 25: // Read only
+        case 25: /* Read only */
             break;
         case 12:
             val &= 0x40;
-            val |= CS_CDC_VER; // Codec version
+            val |= CS_CDC_VER; /* Codec version */
             s->dregs[CS_RAP(s)] = val;
             break;
         default:
@@ -115,7 +115,7 @@ static void cs_mem_write(void *opaque, hwaddr addr,
             break;
         }
         break;
-    case 2: // Read only
+    case 2: /*  Read only */
         break;
     case 4:
         if (val & 1) {

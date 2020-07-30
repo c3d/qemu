@@ -1007,14 +1007,14 @@ static void vfio_probe_nvidia_bar0_quirk(VFIOPCIDevice *vdev, int nr)
  * Example trace:
  *
  * Read from MSI-X table offset 0
- * vfio: vfio_bar_write(0000:05:00.0:BAR2+0x74, 0x1f000, 4) // store read addr
- * vfio: vfio_bar_read(0000:05:00.0:BAR2+0x74, 4) = 0x8001f000 // latch
- * vfio: vfio_bar_read(0000:05:00.0:BAR2+0x70, 4) = 0xfee00398 // read data
+ *  vfio: vfio_bar_write(0000:05:00.0:BAR2+0x74, 0x1f000, 4)  //  store read addr
+ *  vfio: vfio_bar_read(0000:05:00.0:BAR2+0x74, 4) = 0x8001f000  //  latch
+ *  vfio: vfio_bar_read(0000:05:00.0:BAR2+0x70, 4) = 0xfee00398  //  read data
  *
  * Write 0xfee00000 to MSI-X table offset 0
- * vfio: vfio_bar_write(0000:05:00.0:BAR2+0x70, 0xfee00000, 4) // write data
- * vfio: vfio_bar_write(0000:05:00.0:BAR2+0x74, 0x8001f000, 4) // do write
- * vfio: vfio_bar_read(0000:05:00.0:BAR2+0x74, 4) = 0x1f000 // complete
+ *  vfio: vfio_bar_write(0000:05:00.0:BAR2+0x70, 0xfee00000, 4)  //  write data
+ *  vfio: vfio_bar_write(0000:05:00.0:BAR2+0x74, 0x8001f000, 4)  //  do write
+ *  vfio: vfio_bar_read(0000:05:00.0:BAR2+0x74, 4) = 0x1f000  //  complete
  */
 typedef struct VFIOrtl8168Quirk {
     VFIOPCIDevice *vdev;

@@ -32,7 +32,7 @@
 #include "migration/vmstate.h"
 #include "hw/i2c/smbus_eeprom.h"
 
-//#define DEBUG
+/*#define DEBUG */
 
 #define TYPE_SMBUS_EEPROM "smbus-eeprom"
 

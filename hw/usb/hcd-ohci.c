@@ -39,7 +39,7 @@
 #include "hcd-ohci.h"
 
 /* This causes frames to occur 1000x slower */
-//#define OHCI_TIME_WARP 1
+/*#define OHCI_TIME_WARP 1 */
 
 #define ED_LINK_LIMIT 32
 

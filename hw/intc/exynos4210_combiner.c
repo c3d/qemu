@@ -37,7 +37,7 @@
 #include "hw/irq.h"
 #include "hw/qdev-properties.h"
 
-//#define DEBUG_COMBINER
+/*#define DEBUG_COMBINER */
 
 #ifdef DEBUG_COMBINER
 #define DPRINTF(fmt, ...) \

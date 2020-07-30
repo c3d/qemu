@@ -105,7 +105,7 @@ get_sigframe(struct target_sigaction *ka, CPUS390XState *env, size_t frame_size)
 static void save_sigregs(CPUS390XState *env, target_sigregs *sregs)
 {
     int i;
-    //save_access_regs(current->thread.acrs); FIXME
+    /*save_access_regs(current->thread.acrs); FIXME */
 
     /* Copy a 'clean' PSW mask to the user to avoid leaking
        information about whether PER is currently on.  */
@@ -121,7 +121,7 @@ static void save_sigregs(CPUS390XState *env, target_sigregs *sregs)
      * We have to store the fp registers to current->thread.fp_regs
      * to merge them with the emulated registers.
      */
-    //save_fp_regs(&current->thread.fp_regs); FIXME
+    /*save_fp_regs(&current->thread.fp_regs); FIXME */
     for (i = 0; i < 16; i++) {
         __put_user(*get_freg(env, i), &sregs->fpregs.fprs[i]);
     }
@@ -165,13 +165,13 @@ void setup_frame(int sig, struct target_sigaction *ka,
     env->regs[15] = frame_addr;
     env->psw.addr = (target_ulong) ka->_sa_handler | PSW_ADDR_AMODE;
 
-    env->regs[2] = sig; //map_signal(sig);
+    env->regs[2] = sig; /* map_signal(sig); */
     env->regs[3] = frame_addr += offsetof(typeof(*frame), sc);
 
     /* We forgot to include these in the sigcontext.
        To avoid breaking binary compatibility, they are passed as args. */
-    env->regs[4] = 0; // FIXME: no clue... current->thread.trap_no;
-    env->regs[5] = 0; // FIXME: no clue... current->thread.prot_addr;
+    env->regs[4] = 0; /*  FIXME: no clue... current->thread.trap_no; */
+    env->regs[5] = 0; /*  FIXME: no clue... current->thread.prot_addr; */
 
     /* Place signal number on stack to allow backtrace from handler.  */
     __put_user(env->regs[2], &frame->signo);
@@ -225,7 +225,7 @@ void setup_rt_frame(int sig, struct target_sigaction *ka,
     env->regs[15] = frame_addr;
     env->psw.addr = (target_ulong) ka->_sa_handler | PSW_ADDR_AMODE;
 
-    env->regs[2] = sig; //map_signal(sig);
+    env->regs[2] = sig; /* map_signal(sig); */
     env->regs[3] = frame_addr + offsetof(typeof(*frame), info);
     env->regs[4] = frame_addr + offsetof(typeof(*frame), uc);
     return;

@@ -30,7 +30,7 @@
 #include "hw/isa/isa.h"
 #include "hw/qdev-properties.h"
 
-//#define DEBUG
+/*#define DEBUG */
 
 #define ADLIB_KILL_TIMERS 1
 

@@ -36,7 +36,7 @@
 #include "fpu/softfloat.h"
 
 
-//#define DEBUG_DISPATCH 1
+/*#define DEBUG_DISPATCH 1 */
 
 #define DEFO32(name, offset) static TCGv QREG_##name;
 #define DEFO64(name, offset) static TCGv_i64 QREG_##name;

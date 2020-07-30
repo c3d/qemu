@@ -14,8 +14,8 @@
 #include "hw/irq.h"
 #include "hw/sh4/sh.h"
 
-//#define DEBUG_INTC
-//#define DEBUG_INTC_SOURCES
+/*#define DEBUG_INTC */
+/*#define DEBUG_INTC_SOURCES */
 
 #define INTC_A7(x) ((x) & 0x1fffffff)
 

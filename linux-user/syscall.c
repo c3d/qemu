@@ -50,7 +50,7 @@
 #include <utime.h>
 #include <sys/sysinfo.h>
 #include <sys/signalfd.h>
-//#include <sys/user.h>
+/*#include <sys/user.h> */
 #include <netinet/ip.h>
 #include <netinet/tcp.h>
 #include <linux/wireless.h>
@@ -180,9 +180,9 @@
 /* Define DEBUG_ERESTARTSYS to force every syscall to be restarted
  * once. This exercises the codepaths for restart.
  */
-//#define DEBUG_ERESTARTSYS
+/*#define DEBUG_ERESTARTSYS */
 
-//#include <linux/msdos_fs.h>
+/*#include <linux/msdos_fs.h> */
 #define	VFAT_IOCTL_READDIR_BOTH		_IOR('r', 1, struct linux_dirent [2])
 #define	VFAT_IOCTL_READDIR_SHORT	_IOR('r', 2, struct linux_dirent [2])
 
@@ -895,7 +895,7 @@ void target_set_brk(abi_ulong new_brk)
     brk_page = HOST_PAGE_ALIGN(target_brk);
 }
 
-//#define DEBUGF_BRK(message, args...) do { fprintf(stderr, (message), ## args); } while (0)
+/*#define DEBUGF_BRK(message, args...) do { fprintf(stderr, (message), ## args); } while (0) */
 #define DEBUGF_BRK(message, args...)
 
 /* do_brk() must return target values and target errnos. */

@@ -23,7 +23,7 @@
 #include "qapi/visitor.h"
 #include "qemu/cutils.h"
 
-//#define DEBUG_MSD
+/*#define DEBUG_MSD */
 
 #ifdef DEBUG_MSD
 #define DPRINTF(fmt, ...) \

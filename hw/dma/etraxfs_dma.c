@@ -51,7 +51,7 @@
 
 /* descriptors */
 
-// ------------------------------------------------------------ dma_descr_group
+/* ------------------------------------------------------------ dma_descr_group */
 typedef struct dma_descr_group {
   uint32_t                      next;
   unsigned                      eol        : 1;
@@ -71,7 +71,7 @@ typedef struct dma_descr_group {
   }                             down;
 } dma_descr_group;
 
-// ---------------------------------------------------------- dma_descr_context
+/* ---------------------------------------------------------- dma_descr_context */
 typedef struct dma_descr_context {
   uint32_t                      next;
   unsigned                      eol        : 1;
@@ -91,7 +91,7 @@ typedef struct dma_descr_context {
   uint32_t                      saved_data_buf;
 } dma_descr_context;
 
-// ------------------------------------------------------------- dma_descr_data
+/* ------------------------------------------------------------- dma_descr_data */
 typedef struct dma_descr_data {
   uint32_t                      next;
   uint32_t                      buf;

@@ -41,7 +41,7 @@ unsigned int ExtendedCPDO(const unsigned int opcode)
    floatx80 rFm, rFn;
    unsigned int Fd, Fm, Fn, nRc = 1;
 
-   //printk("ExtendedCPDO(0x%08x)\n",opcode);
+   /*printk("ExtendedCPDO(0x%08x)\n",opcode); */
 
    Fm = getFm(opcode);
    if (CONSTANT_FM(opcode))
@@ -218,32 +218,32 @@ unsigned int ExtendedCPDO(const unsigned int opcode)
 #if 0
 floatx80 floatx80_exp(floatx80 Fm)
 {
-//series
+/*series */
 }
 
 floatx80 floatx80_ln(floatx80 Fm)
 {
-//series
+/*series */
 }
 
 floatx80 floatx80_sin(floatx80 rFm)
 {
-//series
+/*series */
 }
 
 floatx80 floatx80_cos(floatx80 rFm)
 {
-//series
+/*series */
 }
 
 floatx80 floatx80_arcsin(floatx80 rFm)
 {
-//series
+/*series */
 }
 
 floatx80 floatx80_arctan(floatx80 rFm)
 {
-  //series
+  /*series */
 }
 
 floatx80 floatx80_log(floatx80 rFm)
@@ -258,7 +258,7 @@ floatx80 floatx80_tan(floatx80 rFm)
 
 floatx80 floatx80_arccos(floatx80 rFm)
 {
-   //return floatx80_sub(halfPi,floatx80_arcsin(rFm));
+   /*return floatx80_sub(halfPi,floatx80_arcsin(rFm)); */
 }
 
 floatx80 floatx80_pow(floatx80 rFn,floatx80 rFm)

@@ -234,7 +234,7 @@ void mb_cpu_do_interrupt(CPUState *cs)
 
             env->regs[14] = env->sregs[SR_PC];
             env->sregs[SR_PC] = cpu->cfg.base_vectors + 0x10;
-            //log_cpu_state_mask(CPU_LOG_INT, cs, 0);
+            /*log_cpu_state_mask(CPU_LOG_INT, cs, 0); */
             break;
 
         case EXCP_BREAK:

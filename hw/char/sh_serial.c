@@ -32,7 +32,7 @@
 #include "qapi/error.h"
 #include "qemu/timer.h"
 
-//#define DEBUG_SERIAL
+/*#define DEBUG_SERIAL */
 
 #define SH_SERIAL_FLAG_TEND (1 << 0)
 #define SH_SERIAL_FLAG_TDE  (1 << 1)

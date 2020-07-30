@@ -26,7 +26,7 @@
 #include "exec/cpu_ldst.h"
 #include "exec/log.h"
 
-//#define DEBUG_PCALL
+/*#define DEBUG_PCALL */
 
 #ifdef DEBUG_PCALL
 # define LOG_PCALL(...) qemu_log_mask(CPU_LOG_PCALL, ## __VA_ARGS__)

@@ -161,7 +161,7 @@ void setup_frame(int sig, struct target_sigaction *ka,
     int sigframe_size, err, i;
 
     /* 1. Make sure everything is clean */
-    //synchronize_user_stack();
+    /*synchronize_user_stack(); */
 
     sigframe_size = NF_ALIGNEDSZ;
     sf_addr = get_sigframe(ka, env, sigframe_size);
@@ -180,8 +180,8 @@ void setup_frame(int sig, struct target_sigaction *ka,
     err = setup___siginfo(&sf->info, env, set->sig[0]);
     __put_user(0, &sf->extra_size);
 
-    //save_fpu_state(regs, &sf->fpu_state);
-    //__put_user(&sf->fpu_state, &sf->fpu_save);
+    /*save_fpu_state(regs, &sf->fpu_state); */
+    /*__put_user(&sf->fpu_state, &sf->fpu_save); */
 
     __put_user(set->sig[0], &sf->info.si_mask);
     for (i = 0; i < TARGET_NSIG_WORDS - 1; i++) {
@@ -357,7 +357,7 @@ struct target_mc_fpu {
     union {
         uint32_t sregs[32];
         uint64_t dregs[32];
-        //uint128_t qregs[16];
+        /*uint128_t qregs[16]; */
     } mcfpu_fregs;
     abi_ulong mcfpu_fsr;
     abi_ulong mcfpu_fprs;
@@ -537,7 +537,7 @@ void sparc64_get_context(CPUSPARCState *env)
     }
 
     /* XXX: tstate must be saved properly */
-    //    __put_user(env->tstate, &((*grp)[SPARC_MC_TSTATE]));
+    /*    __put_user(env->tstate, &((*grp)[SPARC_MC_TSTATE])); */
     __put_user(env->pc, &((*grp)[SPARC_MC_PC]));
     __put_user(env->npc, &((*grp)[SPARC_MC_NPC]));
     __put_user(env->y, &((*grp)[SPARC_MC_Y]));

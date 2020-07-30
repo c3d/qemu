@@ -164,19 +164,19 @@ struct vring {
  *
  * struct vring
  * {
- *	// The actual descriptors (16 bytes each)
+ * 	//  The actual descriptors (16 bytes each)
  *	struct vring_desc desc[num];
  *
- *	// A ring of available descriptor heads with free-running index.
+ * 	//  A ring of available descriptor heads with free-running index.
  *	__virtio16 avail_flags;
  *	__virtio16 avail_idx;
  *	__virtio16 available[num];
  *	__virtio16 used_event_idx;
  *
- *	// Padding to the next align boundary.
+ * 	//  Padding to the next align boundary.
  *	char pad[];
  *
- *	// A ring of used descriptor heads with free-running index.
+ * 	//  A ring of used descriptor heads with free-running index.
  *	__virtio16 used_flags;
  *	__virtio16 used_idx;
  *	struct vring_used_elem used[num];

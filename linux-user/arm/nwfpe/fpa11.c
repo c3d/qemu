@@ -23,10 +23,10 @@
 
 #include "fpopcode.h"
 
-//#include "fpmodule.h"
-//#include "fpmodule.inl"
+/*#include "fpmodule.h" */
+/*#include "fpmodule.inl" */
 
-//#include <asm/system.h>
+/*#include <asm/system.h> */
 
 
 FPA11* qemufpa = NULL;
@@ -135,10 +135,10 @@ void SetRoundingPrecision(const unsigned int opcode)
 unsigned int EmulateAll(unsigned int opcode, FPA11* qfpa, CPUARMState* qregs)
 {
   unsigned int nRc = 0;
-//  unsigned long flags;
+/*  unsigned long flags; */
   FPA11 *fpa11;
   unsigned int cp;
-//  save_flags(flags); sti();
+/*  save_flags(flags); sti(); */
 
   /* Check that this is really an FPA11 instruction: the coprocessor
    * field in bits [11:8] must be 1 or 2.
@@ -169,7 +169,7 @@ unsigned int EmulateAll(unsigned int opcode, FPA11* qfpa, CPUARMState* qregs)
 
   if (TEST_OPCODE(opcode,MASK_CPRT))
   {
-    //fprintf(stderr,"emulating CPRT\n");
+    /*fprintf(stderr,"emulating CPRT\n"); */
     /* Emulate conversion opcodes. */
     /* Emulate register transfer opcodes. */
     /* Emulate comparison opcodes. */
@@ -177,14 +177,14 @@ unsigned int EmulateAll(unsigned int opcode, FPA11* qfpa, CPUARMState* qregs)
   }
   else if (TEST_OPCODE(opcode,MASK_CPDO))
   {
-    //fprintf(stderr,"emulating CPDO\n");
+    /*fprintf(stderr,"emulating CPDO\n"); */
     /* Emulate monadic arithmetic opcodes. */
     /* Emulate dyadic arithmetic opcodes. */
     nRc = EmulateCPDO(opcode);
   }
   else if (TEST_OPCODE(opcode,MASK_CPDT))
   {
-    //fprintf(stderr,"emulating CPDT\n");
+    /*fprintf(stderr,"emulating CPDT\n"); */
     /* Emulate load/store opcodes. */
     /* Emulate load/store multiple opcodes. */
     nRc = EmulateCPDT(opcode);
@@ -195,14 +195,14 @@ unsigned int EmulateAll(unsigned int opcode, FPA11* qfpa, CPUARMState* qregs)
     nRc = 0;
   }
 
-//  restore_flags(flags);
+/*  restore_flags(flags); */
   if(nRc == 1 && get_float_exception_flags(&fpa11->fp_status))
   {
-    //printf("fef 0x%x\n",float_exception_flags);
+    /*printf("fef 0x%x\n",float_exception_flags); */
     nRc = -get_float_exception_flags(&fpa11->fp_status);
   }
 
-  //printf("returning %d\n",nRc);
+  /*printf("returning %d\n",nRc); */
   return(nRc);
 }
 
